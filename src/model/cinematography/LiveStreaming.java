@@ -1,6 +1,9 @@
 package model.cinematography;
 
-import java.util.Calendar;
+import model.ControlPanel;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /*
@@ -10,17 +13,21 @@ TODO Dokumentacja!
 
 public class LiveStreaming extends CWork{
     private float singlePrice;
-    private Calendar displayDate;
+    private LocalDateTime displayDateTime;
 
-    public LiveStreaming(float singlePrice, Calendar displayDate) {
-        this.singlePrice = singlePrice;
-        this.displayDate = displayDate;
+    public LiveStreaming(int id) {
+        super(id);
+        this.singlePrice = (r.nextInt(2000) + 10) / 100f;
+        this.displayDateTime = createDateTime(1, 30);
     }
 
-    public LiveStreaming(String title, String description, List<String> countryList, List<Integer> productionYearList, float userRating, float singlePrice, Calendar displayDate) {
-        super(title, description, countryList, productionYearList, userRating);
-        this.singlePrice = singlePrice;
-        this.displayDate = displayDate;
+    private LocalDateTime createDateTime(int minDays, int maxDays) {
+
+        int days = r.nextInt(maxDays - minDays + 1) + minDays;
+        int hour = r.nextInt(24);
+        int min = r.nextInt(60);
+
+        return ControlPanel.getSimulationDateTime().plusDays(days).withHour(hour).withMinute(min);
     }
 
     public float getSinglePrice() {
@@ -31,11 +38,11 @@ public class LiveStreaming extends CWork{
         this.singlePrice = singlePrice;
     }
 
-    public Calendar getDisplayDate() {
-        return displayDate;
+    public LocalDateTime getDisplayDateTime() {
+        return displayDateTime;
     }
 
-    public void setDisplayDate(Calendar displayDate) {
-        this.displayDate = displayDate;
+    public void setDisplayDateTime(LocalDateTime displayDateTime) {
+        this.displayDateTime = displayDateTime;
     }
 }

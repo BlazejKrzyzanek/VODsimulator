@@ -1,72 +1,102 @@
 package model.cinematography;
 
-import jdk.jshell.spi.ExecutionControl;
-import model.cinematography.CWork;
-
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
-/*
-TODO Konstruktor bezparametrowy powinien wypełniać film losowymi parametrami (może z jakiegoś pliku albo IMDB?)
-TODO Dokumentacja!
+/**
+ * Represents movie as CWork
  */
-
 public class Movie extends CWork {
-    private String category;
-    private int length;
-    private float singlePrice;
-    private Calendar availableDate;
+    private int duration; // minutes
+    private int singlePrice; // cents
+    private int availableTime; // minutes
+    private Promotion promotion;
 
-    public Movie(){
-        this.category = "Akcja";
-        this.length = 119;
-        this.singlePrice = 19.99f;
-        this.availableDate = new GregorianCalendar(2013, 5, 23);
+    /**
+     * Creates a random movie
+     * @param id fixed id
+     */
+    public Movie(int id){
+        super(id);
+        this.duration = r.nextInt(61) + 20;
+        this.singlePrice = r.nextInt(10000) + 10; // between 0.1$ and 100$
+        this.availableTime = r.nextInt(10081) + 1440; // between one day and one week
+        this.promotion = null;
     }
 
-    public Movie(String title, String description, List<String> countryList, List<Integer> productionYearList,
-                 float userRating, String category, int length, int singlePrice, Calendar availableDate) {
-        super(title, description, countryList, productionYearList, userRating);
-        this.category = category;
-        this.length = length;
-        this.singlePrice = singlePrice;
-        this.availableDate = availableDate;
+    /**
+     * @return duration of the movie (minutes)
+     */
+    public int getDuration() {
+        return duration;
     }
 
-    public String getCategory() {
-        return category;
+    /**
+     * Sets the duration of the movie (minutes)
+     * @param duration duration of the movie (minutes)
+     */
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public float getSinglePrice() {
+    /**
+     * @return price for the option of watching through availableTime (cents)
+     */
+    public int getSinglePrice() {
         return singlePrice;
     }
 
+    /**
+     * Sets price for the option of watching through availableTime (cents)
+     * @param singlePrice price (cents)
+     */
     public void setSinglePrice(int singlePrice) {
         this.singlePrice = singlePrice;
     }
 
-    public Calendar getAvailableDate() {
-        return availableDate;
+    /**
+     * @return time by which movie can be watched after purchase
+     */
+    public int getAvailableTime() {
+        return availableTime;
     }
 
-    public void setAvailableDate(Calendar availableDate) {
-        this.availableDate = availableDate;
+    /**
+     * Sets time by which movie can be watched after purchase
+     * @param availableTime time by which movie can be watched after purchase
+     */
+    public void setAvailableTime(int availableTime) {
+        this.availableTime = availableTime;
     }
 
-    public void startPromotion() throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Movie.startPromotion() - TODO");
+    /**
+     * @return promotion, null if does not exist
+     */
+    public Promotion getPromotion() {
+        return promotion;
+    }
+
+    /**
+     * Sets the promotion
+     * @param promotion new promotion, null to remove
+     */
+    public void setPromotion(Promotion promotion) {
+        this.promotion = promotion;
+    }
+
+    /**
+     * Begins new random promotion
+     */
+    public void startPromotion() {
+        this.promotion = new Promotion();
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "duration=" + duration +
+                ", singlePrice=" + singlePrice +
+                ", availableTime=" + availableTime +
+                ", promotion=" + promotion +
+                '}';
     }
 }

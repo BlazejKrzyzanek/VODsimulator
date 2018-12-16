@@ -1,5 +1,6 @@
 package model.cinematography;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -9,22 +10,29 @@ TODO Dokumentacja!
 
 public class Series extends CWork {
 
-    private String category;
     private List<Season> seasons;
 
-    public Series(String title, String description, List<String> countryList, List<Integer> productionYearList,
-                  float userRating, String category, List<Season> seasons) {
-        super(title, description, countryList, productionYearList, userRating);
-        this.category = category;
-        this.seasons = seasons;
+    public Series(int id) {
+        super(id);
+        this.seasons = createSeasons(2,10);
     }
 
-    public String getCategory() {
-        return category;
-    }
+    private List<Season> createSeasons(int minLen, int maxLen){
+        try {
+            if (minLen >= maxLen) {
+                throw new IllegalArgumentException("createSeasons: minLen must be smaller than maxLen");
+            }
+        }catch (IllegalArgumentException e){
+            System.out.println((char)27 + "[33m" + e.getMessage() + (char)27 + "[0m");
+        }
+        int length = r.nextInt(maxLen - minLen + 1) + minLen;
+        List<Season> seasons = new ArrayList<>(length);
+        for (int i=0; i<length; i++){
+            seasons.add(new Season(i+1));
+        }
 
-    public void setCategory(String category) {
-        this.category = category;
+        return seasons;
+
     }
 
     public List<Season> getSeasons() {
@@ -33,5 +41,12 @@ public class Series extends CWork {
 
     public void setSeasons(List<Season> seasons) {
         this.seasons = seasons;
+    }
+
+    @Override
+    public String toString() {
+        return "Series{" +
+                "seasons=" + seasons +
+                '}';
     }
 }

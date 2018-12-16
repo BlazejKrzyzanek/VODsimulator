@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 /*
-TODO konstruktor wypełniający losowymi danymi (skąd je brać żeby miały jakiś sens?)
+TODO konstruktor wypełniający losowymi danymi
 TODO negotiate - negocjacja z ControlPanel ustalając nowy payment
 TODO generator filmów/ seriali/ live
 TODO dokumentacja!

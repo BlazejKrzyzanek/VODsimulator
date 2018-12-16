@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.cinematography.Movie;
 
 /*
 TODO obsługa okien i panelu kontrolnego
@@ -16,8 +15,13 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-        System.out.println("Test");
-        Movie film = new Movie();
+        ControlPanel cp = new ControlPanel(0, false, 50);
+
+        try {
+            cp.runSimulation();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         launch(args);
     }
@@ -29,5 +33,6 @@ public class Main extends Application {
         primaryStage.setTitle("Symulator systemu VOD");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+        primaryStage.close();
     }
 }

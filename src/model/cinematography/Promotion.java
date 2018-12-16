@@ -3,36 +3,36 @@ package model.cinematography;
 import java.util.Calendar;
 import java.util.Objects;
 import java.util.Random;
+import java.util.logging.Logger;
 
 /**
  * Represents promotion with selected discount
  */
 public class Promotion {
-    private Calendar startDate;
-    private Calendar endDate;
+    private int duration;
     private int discountPercent;
+    protected final Logger log = Logger.getLogger(getClass().getName());
 
     /**
-     * Creates new promotion between dates
-     * @param startDate
-     * @param endDate
+     * Creates random promotion in duration between 120 - 1440 minutes (2 to 24 hour)
      */
-    public Promotion(Calendar startDate, Calendar endDate) {
-        this(startDate, endDate, Promotion.createDiscount());
+    public Promotion(){this(new Random().nextInt(1321) + 120);}
+
+    /**
+     * Creates new promotion from now for duration (minutes)
+     * @param duration
+     */
+    public Promotion(int duration) {
+        this(duration, Promotion.createDiscount());
     }
 
     /**
-     * Creates new promotion between dates with the appropriate discount
-     * @param startDate
-     * @param endDate
+     * Creates new promotion from now for duration (minutes) with the appropriate discount (percent)
+     * @param duration
      * @param discountPercent
      */
-    public Promotion(Calendar startDate, Calendar endDate, int discountPercent) {
-        if (startDate.compareTo(endDate) > 0){
-            throw new IllegalArgumentException("Data początkowa jest późniejsza niż końcowa");
-        }
-        this.startDate = startDate;
-        this.endDate = endDate;
+    public Promotion(int duration, int discountPercent) {
+        this.duration = duration;
         this.discountPercent = discountPercent;
     }
 
@@ -45,67 +45,69 @@ public class Promotion {
     }
 
     /**
-     * Returns random percent of discount in range
+     * Creates discount percent
      * @param a min discount > 0
      * @param b max discount <= 100
-     * @return int
+     * @return random percent of discount in range
      * @throws IllegalArgumentException
      */
-    public static int createDiscount(int a, int b) throws IllegalArgumentException {
+    public static int createDiscount(int a, int b){
         try {
             if (a >= b || a < 0 || b > 100) {
-                throw new IllegalArgumentException("a musi być mniejsze od b, przyjmuję obie liczby z przedzialu [0,100]");
+                throw new IllegalArgumentException("a must be smaller than  b");
             }
         } catch (IllegalArgumentException e){
-            a = 0;
-            b = 100;
+            System.out.println((char)27 + "[33m" + e.getMessage() + (char)27 + "[0m");
         }
         Random generator = new Random();
         return generator.nextInt((b-a)+1) + a;
     }
 
-    public Calendar getStartDate() {
-        return startDate;
+    /**
+     * @return promotion duration (minutes)
+     */
+    public int getDuration() {
+        return duration;
     }
 
-    public void setStartDate(Calendar startDate) {
-        this.startDate = startDate;
+    /**
+     * @param duration sets duration of promotion (in minutes)
+     */
+    public void setDuration(int duration) {
+        try {
+            if (duration < 1)
+                throw new IllegalArgumentException("Duration must be positive");
+            this.duration = duration;
+        } catch (IllegalArgumentException e){
+            System.out.println((char)27 + "[33m" + e.getMessage() + (char)27 + "[0m");
+        }
     }
 
-    public Calendar getEndDate() { return endDate; }
-
-    public void setEndDate(Calendar endDate) {
-        this.endDate = endDate;
-    }
-
+    /**
+     * @return discount percent
+     */
     public int getDiscountPercent() {
         return discountPercent;
     }
 
+    /**
+     * Sets discount percent from range [0,100]
+     * @param discountPercent
+     */
     public void setDiscountPercent(int discountPercent) {
-        this.discountPercent = discountPercent;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Promotion promotion = (Promotion) o;
-        return discountPercent == promotion.discountPercent &&
-                Objects.equals(startDate, promotion.startDate) &&
-                Objects.equals(endDate, promotion.endDate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(startDate, endDate, discountPercent);
+        try {
+            if (discountPercent < 0 || discountPercent > 100)
+                throw new IllegalArgumentException("discount percent not in range [0,100]");
+            this.discountPercent = discountPercent;
+        }catch (IllegalArgumentException e){
+            System.out.println((char)27 + "[33m" + e.getMessage() + (char)27 + "[0m");
+        }
     }
 
     @Override
     public String toString() {
         return "Promotion{" +
-                "startDate=" + startDate +
-                ", endDate=" + endDate +
+                "duration=" + duration +
                 ", discountPercent=" + discountPercent +
                 '}';
     }
