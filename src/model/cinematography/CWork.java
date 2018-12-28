@@ -2,6 +2,7 @@ package model.cinematography;
 
 import javafx.scene.image.Image;
 import model.ControlPanel;
+import model.Distributor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +12,9 @@ import java.util.Random;
 /**
  * Represents any kind of cinematographic work
  */
-public class CWork {
+public abstract class CWork {
 
+    private Distributor distributor;
     private String category;
     private final int id;
     private Image posterImage;
@@ -24,12 +26,12 @@ public class CWork {
     Random r;
 
     /**
-     * Creates new CWork with fixed id and random parameters, using words from appropriate lists
-     * @param id individual id
+     * Creates new CWork with random parameters, using words from appropriate lists
      */
-    public CWork(int id){
+    public CWork(Distributor distributor){
+        this.distributor = distributor;
         this.r = new Random();
-        this.id = id;
+        this.id = ControlPanel.getNewCWorkId();
         this.category = createCategory();
         this.posterImage = createPoster();
         this.title = createText(3,5);
@@ -37,6 +39,11 @@ public class CWork {
         this.countryList = createCountryList(1, 5);
         this.productionYearList = createProductionYearList(1,6);
         this.userRating = r.nextFloat() * (10);
+    }
+
+
+    public Distributor getDistributor(){
+        return distributor;
     }
 
 

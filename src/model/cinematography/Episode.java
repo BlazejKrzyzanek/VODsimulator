@@ -1,17 +1,20 @@
 package model.cinematography;
 
+import model.Distributor;
+
 import java.time.LocalDate;
 
 /*
-TODO Konstruktor tworzący losowy odcinek
 TODO dokumentacja!
  */
 
 public class Episode extends Movie{
+    private int number;
     private LocalDate releaseDate;
 
-    public Episode(int id) {
-        super(id);
+    public Episode(Distributor distributor, int number) {
+        super(distributor);
+        this.number = number;
         this.releaseDate = createReleaseDate(1950,2020);
 
     }
@@ -35,7 +38,9 @@ public class Episode extends Movie{
     @Override
     public String toString() {
         return "Episode{" +
-                "releaseDate=" + releaseDate +
-                '}';
+                "number=" + number +
+                ", title=" + this.getTitle() +
+                ", releaseDate=" + releaseDate +
+                "}\n";
     }
 }

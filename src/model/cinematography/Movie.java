@@ -1,6 +1,11 @@
 package model.cinematography;
 
+import model.ControlPanel;
+import model.Distributor;
+
 import java.util.List;
+
+//TODO Lista aktorów
 
 /**
  * Represents movie as CWork
@@ -13,12 +18,11 @@ public class Movie extends CWork {
 
     /**
      * Creates a random movie
-     * @param id fixed id
      */
-    public Movie(int id){
-        super(id);
+    public Movie(Distributor distributor){
+        super(distributor);
         this.duration = r.nextInt(61) + 20;
-        this.singlePrice = r.nextInt(10000) + 10; // between 0.1$ and 100$
+        this.singlePrice = ControlPanel.getMovieSinglePrice(); // between 0.1$ and 100$
         this.availableTime = r.nextInt(10081) + 1440; // between one day and one week
         this.promotion = null;
     }
@@ -97,6 +101,6 @@ public class Movie extends CWork {
                 ", singlePrice=" + singlePrice +
                 ", availableTime=" + availableTime +
                 ", promotion=" + promotion +
-                '}';
+                "}\n\n";
     }
 }

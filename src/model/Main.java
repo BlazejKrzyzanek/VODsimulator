@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.*;
+
 /*
 TODO obsługa okien i panelu kontrolnego
 TODO dokumentacja
@@ -14,25 +16,24 @@ TODO dokumentacja
 public class Main extends Application {
 
     public static void main(String[] args) {
-
-        ControlPanel cp = new ControlPanel(0, false, 50);
-
-        try {
-            cp.runSimulation();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        launch(args);
+        launch();
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../view/mainView.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainView.fxml"));
+
+        Parent root = loader.load();
+
+
+        MainController controller = new MainController();
+        loader.setController(controller);
+
+        Scene scene = new Scene(root, 800, 600);
 
         primaryStage.setTitle("Symulator systemu VOD");
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(scene);
         primaryStage.show();
-        primaryStage.close();
     }
 }

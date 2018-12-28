@@ -1,6 +1,8 @@
 package model.cinematography;
 
 import model.ControlPanel;
+import model.Distributor;
+import model.Simulation;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,9 +17,9 @@ public class LiveStreaming extends CWork{
     private float singlePrice;
     private LocalDateTime displayDateTime;
 
-    public LiveStreaming(int id) {
-        super(id);
-        this.singlePrice = (r.nextInt(2000) + 10) / 100f;
+    public LiveStreaming(Distributor distributor) {
+        super(distributor);
+        this.singlePrice = ControlPanel.getLiveStreamSinglePrice();
         this.displayDateTime = createDateTime(1, 30);
     }
 
@@ -27,7 +29,7 @@ public class LiveStreaming extends CWork{
         int hour = r.nextInt(24);
         int min = r.nextInt(60);
 
-        return ControlPanel.getSimulationDateTime().plusDays(days).withHour(hour).withMinute(min);
+        return Simulation.getDateTime().plusDays(days).withHour(hour).withMinute(min);
     }
 
     public float getSinglePrice() {
@@ -44,5 +46,13 @@ public class LiveStreaming extends CWork{
 
     public void setDisplayDateTime(LocalDateTime displayDateTime) {
         this.displayDateTime = displayDateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "LiveStreaming{" +
+                "singlePrice=" + singlePrice +
+                ", displayDateTime=" + displayDateTime.toLocalDate() +
+                "}\n\n";
     }
 }

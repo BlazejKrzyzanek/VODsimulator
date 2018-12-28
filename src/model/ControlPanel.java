@@ -1,19 +1,13 @@
 package model;
 
 import model.cinematography.CWork;
-import model.cinematography.LiveStreaming;
-import model.cinematography.Movie;
-import model.cinematography.Series;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.TreeMap;
-import java.util.logging.Logger;
+import java.util.*;
 
 /*
 TODO obsługa symulacji
@@ -25,60 +19,70 @@ TODO sprawdzanie czy biznes się opłaca (można podnieść ceny jeśli się nie
 TODO Dokumentacja!
  */
 
-public class ControlPanel {
-    private int money;
-    private boolean hasProfit;
-    private TreeMap<String, Distributor> distributors;
-    private TreeMap<String, User> users;
-    private TreeMap<String, CWork> CWorks;
+public abstract class ControlPanel implements Serializable {
+    private static volatile int cWorkId;
+    private static volatile int userId;
+    private static volatile int movieSinglePrice;
+    private static volatile int liveStreamSinglePrice;
+    private static volatile int seriesSinglePrice;
     private static List<String> names;
+    private static List<String> distributorNames;
     private static List<String> words;
     private static List<String> allCountries;
     private static List<String> categories;
-    private static LocalDateTime simulationDateTime;
-    private int speedMultiplier; // 60000: 1 ms = 1 min
-    private VariableSpeedClock clk;
-    protected final Logger log = Logger.getLogger(getClass().getName());
+    private static int money;
+    private static int monthsWithoutProfit;
+
 
     static {
-        simulationDateTime = LocalDateTime.now();
+        cWorkId = 0;
+        userId = 0;
+        movieSinglePrice = new Random().nextInt(10000) + 10;
+        seriesSinglePrice = new Random().nextInt(10000) + 10;
+        liveStreamSinglePrice = new Random().nextInt(10000) + 10;
+        money = 0;
+        monthsWithoutProfit = 0;
+
         try {
             names = Files.readAllLines(Paths.get(".", "resources\\text", "names.txt"), Charset.forName("utf-8"));
+            distributorNames = Files.readAllLines(Paths.get(".", "resources\\text", "distributorNames.txt"), Charset.forName("utf-8"));
             words = Files.readAllLines(Paths.get(".", "resources\\text", "dict.txt"), Charset.forName("utf-8"));
             allCountries = Files.readAllLines(Paths.get(".", "resources\\text", "countries.txt"), Charset.forName("utf-8"));
             categories = Files.readAllLines(Paths.get(".", "resources\\text", "categories.txt"), Charset.forName("utf-8"));
         } catch (IOException e) {
+            System.out.println("File does not exist");
             e.printStackTrace();
         }
     }
 
-    ControlPanel(int money, boolean hasProfit, int speedMultiplier){
-        this.money = money;
-        this.hasProfit = hasProfit;
-        this.speedMultiplier = speedMultiplier;
-        this.clk = new VariableSpeedClock(this.speedMultiplier);
+
+    public static synchronized int getNewCWorkId() {
+        return cWorkId++;
+    }
+    
+    public static synchronized int getNewUserId() {
+        return userId++;
     }
 
-    void runSimulation() throws InterruptedException {
-        System.out.println((char)27 + "[33m\tSTART\n" +(char)27 +"[0m");
-        long st = System.currentTimeMillis();
 
 
-        long end = System.currentTimeMillis();
-        System.out.println((char)27 + "[36m\tEND\nTIME: " + ((end-st)) + "ms");
+    // TODO reset
+    public static void resetAll(){
+        cWorkId = 0;
+        userId = 0;
+        money = 0;
+        monthsWithoutProfit = 0;
     }
 
-    public void pauseSimulation(){
-    }
-
-    public void resetSimulation(){
-    }
-
-    public void pay(){
+    public static void pay(){
     }
 
     public static List<String> getNames() {
         return names;
+    }
+
+    public static List<String> getDistributorNames() {
+        return distributorNames;
     }
 
     public static List<String> getWords() {
@@ -93,11 +97,32 @@ public class ControlPanel {
         return categories;
     }
 
-    public static LocalDateTime getSimulationDateTime() {
-        return simulationDateTime;
+    public static synchronized int getMovieSinglePrice() {
+        return movieSinglePrice;
     }
 
-    public List<CWork> search(String pattern){
+    public static synchronized int getLiveStreamSinglePrice() {
+        return liveStreamSinglePrice;
+    }
+
+    public static synchronized int getSeriesSinglePrice() {
+        return seriesSinglePrice;
+    }
+
+    public static synchronized void setMovieSinglePrice(int moviePrice) {
+        movieSinglePrice = moviePrice;
+    }
+
+    public static synchronized void setLiveStreamSinglePrice(int liveStreamPrice) {
+        liveStreamSinglePrice = liveStreamPrice;
+    }
+
+    public static synchronized void setSeriesSinglePrice(int seriesPrice) {
+        seriesSinglePrice = seriesPrice;
+    }
+
+
+    public static List<CWork> search(String pattern){
         return null;
     }
 }

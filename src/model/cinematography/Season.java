@@ -1,36 +1,34 @@
 package model.cinematography;
 
+import model.Distributor;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
 /*
-TODO Generator odcinków
 TODO Dokumentacja!
  */
 
 public class Season {
+    private Distributor distributor;
     private int number;
     private List<Episode> episodes;
 
-    public Season(int number) {
+    public Season(Distributor distributor, int number) {
+        this.distributor = distributor;
         this.number = number;
         this.episodes = createEpisodes(2, 10);
     }
 
     private List<Episode> createEpisodes(int minLen, int maxLen) {
-        try {
-            if (minLen >= maxLen) {
-                throw new IllegalArgumentException("createEpisodes: minLen must be smaller than maxLen");
-            }
-        }catch (IllegalArgumentException e){
-            System.out.println((char)27 + "[33m" + e.getMessage() + (char)27 + "[0m");
-        }
+        if (minLen >= maxLen)
+            throw new IllegalArgumentException("minLen must be smaller than maxLen");
         int length = new Random().nextInt(maxLen - minLen + 1) + minLen;
         List<Episode> episodes = new ArrayList<>(length);
         for (int i=0; i<length; i++){
-            episodes.add(new Episode(i+1));
+            episodes.add(new Episode(distributor, i+1));
         }
         return episodes;
     }
@@ -50,7 +48,8 @@ public class Season {
     }
 
     public void setEpisodes(List<Episode> episodes) {
-        this.episodes = episodes;
+        this.episodes.clear();
+        this.episodes.addAll(episodes);
     }
 
     @Override

@@ -1,20 +1,30 @@
 package model;
 
+import java.time.LocalDateTime;
+
 public class VariableSpeedClock {
 
-    private double speed;
-    private long startTime;
+    private LocalDateTime simulationDateTime;
+    private int speed;
 
-    public VariableSpeedClock(double speed) {
-        this(speed, System.currentTimeMillis());
-    }
+    public VariableSpeedClock(int speed) {this(speed, LocalDateTime.now());}
 
-    public VariableSpeedClock(double speed, long startTime) {
+    public VariableSpeedClock(int speed, LocalDateTime simulationDateTime) {
         this.speed = speed;
-        this.startTime = startTime;
+        this.simulationDateTime = simulationDateTime;
     }
 
-    public long getTime () {
-        return (long) ((System.currentTimeMillis() - this.startTime) * this.speed + this.startTime);
+    public void setSpeed(int speed){
+        this.speed = speed;
+    }
+
+    public void run(){
+        while (true){
+            this.simulationDateTime.plusMinutes(this.speed);
+        }
+    }
+
+    public LocalDateTime getSimulationDateTime() {
+        return this.simulationDateTime;
     }
 }
