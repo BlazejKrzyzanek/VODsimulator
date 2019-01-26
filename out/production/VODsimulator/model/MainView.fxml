@@ -15,19 +15,21 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="800.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.MainController">
    <opaqueInsets>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </opaqueInsets>
    <bottom>
       <GridPane fx:id="SimulationTimeLabel" hgap="10.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="17.5" prefWidth="100.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="17.5" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="3.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="7.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
@@ -37,20 +39,24 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonOA" text="reset" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonOA" text="START" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#pauseButtonOA" text="pause" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonOA" text="reset" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonOA" text="START" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#pauseButtonOA" text="pause" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Label fx:id="simulationTimeLabel" text="Simulation Time" GridPane.columnIndex="5" GridPane.halignment="CENTER" />
-            <Label fx:id="moneyLabel" text="1000" textAlignment="CENTER" textFill="#0ea800" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+            <Label fx:id="simulationTimeLabel" text="Simulation Time" GridPane.columnIndex="6" GridPane.halignment="CENTER" />
+            <Label fx:id="moneyLabel" prefHeight="17.0" prefWidth="288.0" text="1000" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="LEFT">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" text="\$" textFill="#0ea800" GridPane.halignment="RIGHT" />
+            <Label alignment="CENTER_RIGHT" text="\$" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="monthsWithoutProfitLabel" text="Months without profit" textFill="RED" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -58,19 +64,36 @@
       </GridPane>
    </bottom>
    <right>
-      <VBox spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox minHeight="410.0" minWidth="220.0" prefWidth="220.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="distributorButton" mnemonicParsing="false" onAction="#distributorButtonOA" prefHeight="25.0" prefWidth="142.0" text="New distributor" />
-            <Button fx:id="userButton" mnemonicParsing="false" onAction="#userButtonOA" prefHeight="25.0" prefWidth="142.0" text="New user" />
-            <Label text="Bascic subscription" />
-            <Slider fx:id="basicPriceSlider" />
-            <Label text="Premium subscription" />
-            <Slider fx:id="premiumPriceSlider" />
+            <Button fx:id="distributorButton" mnemonicParsing="false" onAction="#distributorButtonOA" prefHeight="25.0" prefWidth="180.0" text="New distributor" />
+            <Button fx:id="userButton" mnemonicParsing="false" onAction="#userButtonOA" prefHeight="25.0" prefWidth="180.0" text="New user" />
+            <Label text="Basic subscription" />
+            <HBox>
+               <children>
+                  <TextField fx:id="basicPriceText" prefHeight="25.0" prefWidth="50.0" text="20" />
+                  <Slider fx:id="basicPriceSlider" prefHeight="14.0" prefWidth="130.0" value="20.0" />
+               </children>
+            </HBox>
             <Label text="Family subscription" />
-            <Slider fx:id="familyPriceSlider" />
-            <Slider fx:id="singlePriceSlider" />
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonOA" prefHeight="25.0" prefWidth="142.0" text="Save" />
-            <Button fx:id="readButton" mnemonicParsing="false" onAction="#readButtonOA" prefHeight="25.0" prefWidth="142.0" text="Read" />
+            <HBox>
+               <children>
+                  <TextField fx:id="familyPriceText" prefHeight="25.0" prefWidth="50.0" text="35" />
+                  <Slider fx:id="familyPriceSlider" prefHeight="14.0" prefWidth="130.0" value="35.0" />
+               </children>
+            </HBox>
+            <Label text="Premium subscription" />
+            <HBox>
+               <children>
+                  <TextField fx:id="premiumPriceText" prefHeight="25.0" prefWidth="50.0" text="50" />
+                  <Slider fx:id="premiumPriceSlider" prefHeight="14.0" prefWidth="130.0" value="50.0" />
+               </children>
+            </HBox>
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonOA" prefHeight="25.0" prefWidth="180.0" text="Save">
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin></Button>
+            <Button fx:id="readButton" mnemonicParsing="false" onAction="#readButtonOA" prefHeight="25.0" prefWidth="180.0" text="Read" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="15.0" />
@@ -119,15 +142,6 @@
                         </TableView>
                      </children></AnchorPane>
               </content>
-            </Tab>
-            <Tab text="Actors">
-               <content>
-                  <ListView prefHeight="200.0" prefWidth="200.0">
-                     <effect>
-                        <InnerShadow blurType="TWO_PASS_BOX" />
-                     </effect>
-                  </ListView>
-               </content>
             </Tab>
         </tabs>
          <BorderPane.margin>

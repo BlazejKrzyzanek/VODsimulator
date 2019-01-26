@@ -36,7 +36,7 @@ public class UserInfoController implements Initializable{
             this.nrLabel.setText(this.user.getCardNumber());
             String subscriptionText;
             if(this.user.getVodSubscription() == null)
-                subscriptionText = "Brak";
+                subscriptionText = "None";
             else
                 subscriptionText = this.user.getVodSubscription().toString();
             this.subscriptionLabel.setText(subscriptionText);

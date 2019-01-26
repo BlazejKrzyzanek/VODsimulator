@@ -12,15 +12,7 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Podstawowe informacje o użytkowniku">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="20.0" top="20.0" />
-               </VBox.margin>
-            </Label>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="300.0" prefWidth="200.0">
                <children>
                   <ImageView fx:id="avatarImage" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -35,24 +27,24 @@
                            </font>
                         </Label>
                         <Label fx:id="idLabel" text="id" />
-                        <Label text="Adres e-mail: ">
+                        <Label text="E-mail address:">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
                         <Label fx:id="mailLabel" text="mail" />
-                        <Label text="Data urodzenia">
+                        <Label text="Birth date:">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Label>
                         <Label fx:id="dateLabel" text="date" />
-                        <Label text="Numer konta bankowego:">
+                        <Label text="Bank account:">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
                         <Label fx:id="nrLabel" text="nr" />
-                        <Label text="Rodzaj subskrybcji:">
+                        <Label text="Subscription:">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -68,4 +60,13 @@
          </children>
       </VBox>
    </center>
+   <top>
+      <Label text="Basic information about the customer" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="20.0" top="20.0" />
+         </BorderPane.margin></Label>
+   </top>
 </BorderPane>

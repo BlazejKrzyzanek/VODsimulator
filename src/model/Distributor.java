@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /*
 TODO konstruktor wypełniający losowymi danymi
@@ -26,35 +27,58 @@ TODO dokumentacja!
 public class Distributor extends Task<Integer> implements Serializable {
     private String distributorName;
     private int payment = 10;
-    private int money;
     private ObservableList<CWork> cWorks;
-    private boolean isPaused;
+    private AtomicBoolean paused;
+    private ControlPanel cp;
 
     public Distributor() {
         this.distributorName = createName();
         this.cWorks = FXCollections.observableArrayList(new ArrayList<>());
-        this.isPaused = false;
+        this.paused = new AtomicBoolean(false);
+        this.cp = ControlPanel.getInstance();
     }
 
     @Override
     public Integer call() {
         int randomMinutes;
+        startLoop();
         while (!isCancelled() && !Thread.currentThread().isInterrupted()){
             try {
-                if (!this.isPaused) {
-                    randomMinutes = new Random().nextInt(4320)+1; // Minimum one per 3 days
-                    System.out.println(this.toString() + (char)27 + "[33m\tTWORZĘ DZIEŁO\n" +(char)27 +"[0m");
-                    createCWork();
-                    Thread.sleep(Simulation.simMinutesToRealMillis(randomMinutes));
-                } else {
-                    Thread.sleep(Simulation.ONE_TICK);
+                synchronized(this) {
+                    while (paused.get()) {
+                        try {
+                            wait();
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                        }
+                    }
                 }
+                randomMinutes = new Random().nextInt(4320)+1; // Minimum one per 3 days
+                System.out.println(this.toString() + (char)27 + "[33m\tTWORZĘ DZIEŁO\n" +(char)27 +"[0m");
+                createCWork();
+                Thread.sleep(Simulation.simMinutesToRealMillis(randomMinutes));
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         }
         return 0;
     }
+
+    public synchronized void pauseLoop(){
+        paused.set(true);
+    }
+
+    public synchronized void startLoop(){
+        notify();
+        paused.set(false);
+    }
+
+
+
+
+
+
+
 
     private String createName(){
         String name = ControlPanel.getInstance().getDistributorNames().get(
@@ -66,10 +90,9 @@ public class Distributor extends Task<Integer> implements Serializable {
     }
 
     public void negotiate(){
-        ControlPanel cp = ControlPanel.getInstance();
         int tmp = new Random().nextInt((cp.getMovieSinglePrice() +
                 cp.getLiveStreamSinglePrice() +
-                cp.getSeriesSinglePrice()));
+                cp.getSeriesSinglePrice()) * 4);
         this.payment = tmp * this.cWorks.size() + cp.getUsers().size() / 20;
     }
 
@@ -96,17 +119,17 @@ public class Distributor extends Task<Integer> implements Serializable {
             case 0:
                 cWork = new Movie(this);
                 this.cWorks.add(cWork);
-                ControlPanel.getInstance().addCWork(cWork);
+                this.cp.addCWork(cWork);
                 return cWork;
             case 1:
                 cWork = new Series(this);
                 this.cWorks.add(cWork);
-                ControlPanel.getInstance().addCWork(cWork);
+                this.cp.addCWork(cWork);
                 return cWork;
             case 2:
                 cWork = new LiveStreaming(this);
                 this.cWorks.add(cWork);
-                ControlPanel.getInstance().addCWork(cWork);
+                this.cp.addCWork(cWork);
                 return cWork;
 
                 default: return null;
@@ -117,20 +140,15 @@ public class Distributor extends Task<Integer> implements Serializable {
         return cWorks;
     }
 
+    public void deleteCWork(CWork c){
+        this.cp.deleteCWork(c);
+        this.cWorks.removeIf(cWork -> cWork.equals(c));
+    }
+
     public void setcWorks(List<CWork> cWorks) {
         this.cWorks.clear();
         this.cWorks.addAll(cWorks);
     }
-
-    public void pauseLoop(){
-        this.isPaused = true;
-    }
-
-    public void startLoop(){
-        this.isPaused = false;
-    }
-
-    public void stopLoop(){ this.cancel(); }
 
     @Override
     public boolean equals(Object o) {
@@ -138,14 +156,13 @@ public class Distributor extends Task<Integer> implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Distributor that = (Distributor) o;
         return payment == that.payment &&
-                money == that.money &&
                 Objects.equals(distributorName, that.distributorName) &&
                 Objects.equals(cWorks, that.cWorks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(distributorName, payment, money, cWorks);
+        return Objects.hash(distributorName, payment, cWorks);
     }
 
     @Override

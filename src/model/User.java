@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /*
 TODO Indywidualne ID dla każdego (może static albo coś?)
@@ -27,27 +28,35 @@ public class User extends Task<Integer> implements Serializable {
     private String email;
     private String cardNumber;
     private VodSubscription vodSubscription;
-    private boolean isPaused;
+    private AtomicBoolean paused;
 
     public User() {
         this.cp = ControlPanel.getInstance();
         this.id = cp.getNewUserId();
         this.genre = new Random().nextInt(2);
-        System.out.println(this.id);
         this.birthDate = createBirthDate();
         this.email = createEmail();
         this.cardNumber = createCardNumber();
         this.vodSubscription = null;
-        this.isPaused = false;
+        this.paused = new AtomicBoolean(false);
     }
 
     @Override
     protected Integer call() throws Exception {
         int randomCWorkId, randomCWorkMinutes;
         CWork randomCWork;
+        startLoop();
         while (!isCancelled() && !Thread.currentThread().isInterrupted()){
             try {
-                if (!this.isPaused && cp.getCWorks().size() > 0) {
+                synchronized(this) {
+                    while (paused.get()) try {
+                        wait();
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+                if (cp.getCWorks().size() > 0) {
+                    System.out.println(this.id);
                     randomCWorkId = new Random().nextInt(cp.getCWorks().size());
                     randomCWork = cp.getCWorks().get(randomCWorkId);
                     int p = new Random().nextInt(1000);
@@ -67,7 +76,8 @@ public class User extends Task<Integer> implements Serializable {
                         case "Movie":
                             Movie m = (Movie) randomCWork;
                             randomCWorkMinutes = m.getDuration();
-                            if(vodSubscription != null)
+                            m.watch();
+                            if(vodSubscription == null)
                                 Platform.runLater(new Runnable(){
                                     @Override
                                     public void run() {
@@ -78,7 +88,8 @@ public class User extends Task<Integer> implements Serializable {
                         case "LiveStreaming":
                             LiveStreaming l = (LiveStreaming) randomCWork;
                             randomCWorkMinutes = new Random().nextInt(400);
-                            if(vodSubscription != null)
+                            l.watch();
+                            if(vodSubscription == null)
                                 Platform.runLater(new Runnable(){
                                     @Override
                                     public void run() {
@@ -91,7 +102,10 @@ public class User extends Task<Integer> implements Serializable {
                             int a = new Random().nextInt(s.getSeasons().size());
                             int b = new Random().nextInt(s.getSeasons().get(a).getEpisodes().size());
                             randomCWorkMinutes = s.getSeasons().get(a).getEpisodes().get(b).getDuration();
-                            if(vodSubscription != null)
+                            s.watch();
+                            s.getSeasons().get(a).getEpisodes().get(b).watch();
+
+                            if(vodSubscription == null)
                                 Platform.runLater(new Runnable(){
                                     @Override
                                     public void run() {
@@ -100,21 +114,43 @@ public class User extends Task<Integer> implements Serializable {
                                 });
                             break;
                             default:
-                                throw new Exception("Coś poszło nie tak");
+                                throw new Exception("Something went wrong");
                     }
-                    System.out.println(this.getId() + " Oglądam " + randomCWork.getType());
-                    //watch();
-                    System.out.println(this.getId() + " ide Spać");
                     Thread.sleep(Simulation.simMinutesToRealMillis(randomCWorkMinutes));
                 } else {
-                    Thread.sleep(Simulation.ONE_TICK);
+                    Thread.sleep(Simulation.getOneTick());
                 }
+
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         }
         return 0;
     }
+
+
+    public synchronized void pauseLoop(){
+        paused.set(true);
+    }
+
+    public synchronized void startLoop(){
+        notify();
+        paused.set(false);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public synchronized int getId() {
         return id;
@@ -165,16 +201,6 @@ public class User extends Task<Integer> implements Serializable {
     public void setVodSubscription(VodSubscription vodSubscription) {
         this.vodSubscription = vodSubscription;
     }
-
-    public void pauseLoop(){
-        this.isPaused = true;
-    }
-
-    public void startLoop(){
-        this.isPaused = false;
-    }
-
-    public void stopLoop(){ this.cancel(); }
 
     public int getGenre() {
         return genre;

@@ -21,19 +21,19 @@ public class VodSubscription {
         switch (r){
             case 0:
                 this.type = "Basic";
-                this.price = cp.getBasicPrice();
+                this.price = cp.getBasicPrice().getValue();
                 this.maxResolution = "HD";
                 this.numberOfDevices = 2;
                 break;
             case 1:
                 this.type = "Family";
-                this.price = cp.getFamilyPrice();
+                this.price = cp.getFamilyPrice().getValue();
                 this.maxResolution = "FullHD";
                 this.numberOfDevices = 3;
                 break;
             case 2:
                 this.type = "Premium";
-                this.price = cp.getPremiumPrice();
+                this.price = cp.getPremiumPrice().getValue();
                 this.maxResolution = "8K FUHD HDR 3D VR";
                 this.numberOfDevices = 4;
                 break;
@@ -85,6 +85,6 @@ public class VodSubscription {
         return "Type: " + this.type +
                 ",\nMax resolution: " + maxResolution +
                 ",\nNumber of devices: " + numberOfDevices +
-                ",\nExpiration date: " + expirationDate;
+                ",\nExpiration date: " + expirationDate.toString();
     }
 }

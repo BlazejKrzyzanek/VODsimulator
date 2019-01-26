@@ -3,9 +3,6 @@ package model.cinematography;
 import model.ControlPanel;
 import model.Distributor;
 
-import java.io.Serializable;
-import java.util.List;
-
 //TODO Lista aktorów
 
 /**
@@ -13,7 +10,6 @@ import java.util.List;
  */
 public class Movie extends CWork{
     private int duration; // minutes
-    private int singlePrice; // $
     private int availableTime; // minutes
     private Promotion promotion;
 
@@ -23,7 +19,6 @@ public class Movie extends CWork{
     public Movie(Distributor distributor, int id){
         super(distributor, id);
         this.duration = r.nextInt(61) + 20;
-        this.singlePrice = ControlPanel.getInstance().getMovieSinglePrice(); // between 0.1$ and 100$
         this.availableTime = r.nextInt(10081) + 1440; // between one day and one week
         this.promotion = null;
     }
@@ -31,7 +26,6 @@ public class Movie extends CWork{
     public Movie(Distributor distributor){
         super(distributor);
         this.duration = r.nextInt(61) + 20;
-        this.singlePrice = ControlPanel.getInstance().getMovieSinglePrice(); // between 0.1$ and 100$
         this.availableTime = r.nextInt(10081) + 1440; // between one day and one week
         this.promotion = null;
     }
@@ -49,21 +43,6 @@ public class Movie extends CWork{
      */
     public void setDuration(int duration) {
         this.duration = duration;
-    }
-
-    /**
-     * @return price for the option of watching through availableTime (cents)
-     */
-    public int getSinglePrice() {
-        return singlePrice;
-    }
-
-    /**
-     * Sets price for the option of watching through availableTime (cents)
-     * @param singlePrice price (cents)
-     */
-    public void setSinglePrice(int singlePrice) {
-        this.singlePrice = singlePrice;
     }
 
     /**
@@ -107,7 +86,7 @@ public class Movie extends CWork{
     public String toString() {
         return "Movie{" +
                 "duration=" + duration +
-                ", singlePrice=" + singlePrice +
+                ", singlePrice=" + getSinglePrice() +
                 ", availableTime=" + availableTime +
                 ", promotion=" + promotion +
                 "}\n\n";

@@ -1,14 +1,17 @@
 package model.cinematography;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.scene.image.Image;
 import model.ControlPanel;
 import model.Distributor;
+import model.Simulation;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import java.time.LocalDate;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Represents any kind of cinematographic work
@@ -25,7 +28,12 @@ public abstract class CWork implements Serializable {
     private String description;
     private List<String> countryList;
     private List<Integer> productionYearList;
-    private float userRating;
+    private List<Actor> actorList;
+    private int userRating;
+
+    private int singlePrice;
+
+    private Map<LocalDate, Integer> audienceMap;
     Random r;
 
     /**
@@ -48,7 +56,12 @@ public abstract class CWork implements Serializable {
         this.description = createText(20,50);
         this.countryList = createCountryList(1, 5);
         this.productionYearList = createProductionYearList(1,6);
-        this.userRating = r.nextFloat() * (10);
+        this.actorList = new ArrayList<>();
+        for (int i=0; i<new Random().nextInt(10) + 1; i++) actorList.add(new Actor());
+        this.userRating = r.nextInt(10) + 1;
+        this.singlePrice = ControlPanel.getInstance().getMovieSinglePrice(); // between 0.1$ and 100$
+
+        this.audienceMap = new TreeMap<>();
     }
 
     public int getImageId() {
@@ -57,6 +70,35 @@ public abstract class CWork implements Serializable {
 
     public Distributor getDistributor(){
         return distributor;
+    }
+
+
+    public void watch(){
+        LocalDate date = Simulation.getDateTime().toLocalDate();
+        this.audienceMap.merge(date, 1, (a, b) -> a + b);
+    }
+
+    public Map<LocalDate, Integer> getAudienceMap(){
+        return audienceMap;
+    }
+
+    public List<Actor> getActorList(){
+        return actorList;
+    }
+
+    /**
+     * @return price for the option of watching through availableTime (cents)
+     */
+    public int getSinglePrice() {
+        return singlePrice;
+    }
+
+    /**
+     * Sets price for the option of watching through availableTime (cents)
+     * @param singlePrice price (cents)
+     */
+    public void setSinglePrice(int singlePrice) {
+        this.singlePrice = singlePrice;
     }
 
 
@@ -131,7 +173,7 @@ public abstract class CWork implements Serializable {
             wordIdx = r.nextInt(ControlPanel.getInstance().getWords().size());
             text.append(ControlPanel.getInstance().getWords().get(wordIdx));
             if (i % 10 == 9){
-                text.append(".\n");
+                text.append(". ");
             } else {
                 text.append(" ");
             }
@@ -211,7 +253,7 @@ public abstract class CWork implements Serializable {
     /**
      * @return rating of users
      */
-    public float getUserRating() {
+    public int getUserRating() {
         return userRating;
     }
 
@@ -219,7 +261,7 @@ public abstract class CWork implements Serializable {
      * Sets a user rating
      * @param userRating new rating
      */
-    public void setUserRating(float userRating) {
+    public void setUserRating(int userRating) {
         this.userRating = userRating;
     }
 
@@ -228,6 +270,10 @@ public abstract class CWork implements Serializable {
      */
     public int getId() {
         return id;
+    }
+
+    public void delete(){
+        distributor.deleteCWork(this);
     }
 
     @Override

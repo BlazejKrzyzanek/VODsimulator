@@ -1,7 +1,8 @@
 package model;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,14 +11,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import model.cinematography.CWork;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -33,8 +35,13 @@ public class MainController implements Initializable {
     @FXML private Slider premiumPriceSlider;
     @FXML private Slider singlePriceSlider;
 
+    @FXML private TextField basicPriceText;
+    @FXML private TextField familyPriceText;
+    @FXML private TextField premiumPriceText;
+
     @FXML private Label simulationTimeLabel;
     @FXML private Label moneyLabel;
+    @FXML private Label monthsWithoutProfitLabel;
 
     @FXML private ListView<Distributor> distributorsListView;
     @FXML private ListView<User> usersListView;
@@ -65,15 +72,26 @@ public class MainController implements Initializable {
 
         this.simulationTimeLabel.textProperty().bind(sim.messageProperty());
         this.moneyLabel.textProperty().bind(cp.getMoney().asString());
+        this.monthsWithoutProfitLabel.textProperty().bind(cp.getMonthsWithoutProfit().asString());
+        this.monthsWithoutProfitLabel.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> ov, String t, String t1) {
+                if (t1.equals("3")) {
+                    unprofitable();
+                }
+            }
+        });
 
         this.distributorsListView.setItems(cp.getDistributors());
         this.distributorsListView.setOnMouseClicked(event -> {
-            distributorOA();
+            if(event.getClickCount() == 2)
+                    distributorOA(distributorsListView);
         });
 
         this.usersListView.setItems(cp.getUsers());
         this.usersListView.setOnMouseClicked(event -> {
-            userOA();
+            if(event.getClickCount() == 2)
+                    userOA(usersListView);
         });
 
         this.cWorksIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -82,16 +100,40 @@ public class MainController implements Initializable {
 
         this.cWorkTableView.setItems(cp.getCWorks());
         this.cWorkTableView.setOnMouseClicked(event -> {
-            productOA(this.cWorkTableView);
+            if(event.getClickCount() == 2)
+                productOA(cWorkTableView);
         });
+
+        cp.setBasicPrice(((int) basicPriceSlider.getValue()));
+        basicPriceSlider.valueProperty().addListener(
+                (observable, oldvalue, newvalue) ->
+                {
+                    cp.setBasicPrice(newvalue.intValue());
+                    basicPriceText.setText(Integer.toString(newvalue.intValue()));
+                } );
+        cp.setFamilyPrice((int) familyPriceSlider.getValue());
+        familyPriceSlider.valueProperty().addListener(
+                (observable, oldvalue, newvalue) ->
+                {
+                    cp.setFamilyPrice(newvalue.intValue());
+                    familyPriceText.setText(Integer.toString(newvalue.intValue()));
+                } );
+        cp.setPremiumPrice((int) premiumPriceSlider.getValue());
+        premiumPriceSlider.valueProperty().addListener(
+                (observable, oldvalue, newvalue) ->
+                {
+                    cp.setPremiumPrice(newvalue.intValue());
+                    premiumPriceText.setText(Integer.toString(newvalue.intValue()));
+                } );
+
     }
 
-    private void distributorOA(){
-        Distributor d = this.distributorsListView.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("DistributorInfoView.fxml"));
+    private void unprofitable(){
+        resetButtonOA();
+        FXMLLoader loader = new FXMLLoader(MainController.class.getResource("UnprofitableView.fxml"));
 
-        DistributorInfoController distributorInfoController = new DistributorInfoController(d);
-        loader.setController(distributorInfoController);
+        UnprofitableController unprofitableController = new UnprofitableController(this.monthsWithoutProfitLabel.getScene().getWindow());
+        loader.setController(unprofitableController);
 
         Parent root = null;
         try {
@@ -101,56 +143,82 @@ public class MainController implements Initializable {
         }
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.setTitle(d.getDistributorName());
+        stage.setTitle("You are bankrupt :)");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
 
-    private void userOA(){
-        User u = this.usersListView.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserInfoView.fxml"));
+    static void distributorOA(ListView<Distributor> distributorsListView){
+        Distributor d = distributorsListView.getSelectionModel().getSelectedItem();
+        if(d != null) {
+            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("DistributorInfoView.fxml"));
 
-        UserInfoController userInfoController = new UserInfoController(u);
-        loader.setController(userInfoController);
+            DistributorInfoController distributorInfoController = new DistributorInfoController(d);
+            loader.setController(distributorInfoController);
 
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle(d.getDistributorName());
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
         }
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setTitle(u.getEmail());
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
+    }
+
+    static void userOA(ListView<User> usersListView){
+        User u = usersListView.getSelectionModel().getSelectedItem();
+        if(u != null) {
+            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("UserInfoView.fxml"));
+
+            UserInfoController userInfoController = new UserInfoController(u);
+            loader.setController(userInfoController);
+
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle(u.getEmail());
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        }
     }
 
     static void productOA(TableView<CWork> cWorkTableView){
         CWork c = cWorkTableView.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new FXMLLoader(MainController.class.getResource("ProductInfoView.fxml"));
+        if(c != null) {
+            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("ProductInfoView.fxml"));
 
-        ProductInfoController productInfoController = new ProductInfoController(c);
-        loader.setController(productInfoController);
+            ProductInfoController productInfoController = new ProductInfoController(c);
+            loader.setController(productInfoController);
 
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle(c.getTitle());
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
         }
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setTitle(c.getTitle());
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
     }
 
-    @FXML protected void resetButtonOA(ActionEvent e){
-        if(this.sim != null){
+    @FXML protected void resetButtonOA(){
+        if(sim != null){
             // Must be first, it stops all running threads in simulation
             sim.cancel();
-            simTh.interrupt();
+            //simTh.interrupt();
             cp.resetAll();
 
             sim = new Simulation();
@@ -167,17 +235,15 @@ public class MainController implements Initializable {
             usersListView.refresh();
 
             cWorkTableView.setItems(cp.getCWorks());
-
-
         }
 
     }
 
     @FXML protected void startButtonOA(ActionEvent e){
         if (sim == null) {
-            this.sim = new Simulation();
-            this.simTh = new Thread(sim);
-            this.simTh.setDaemon(true);
+            sim = new Simulation();
+            simTh = new Thread(sim);
+            simTh.setDaemon(true);
             simTh.start();
         } else{
             sim.startSimulation();
@@ -186,16 +252,11 @@ public class MainController implements Initializable {
     }
 
     @FXML protected void pauseButtonOA(ActionEvent e){
-        if(this.sim != null){
-            this.sim.pauseSimulation();
+        if(sim != null){
+            sim.pauseSimulation();
         }
 
     }
-
-//    @FXML protected void fasterButtonOA(ActionEvent e){
-//        if(!sim.isPaused())
-//            Simulation.faster();
-//    }
 
     @FXML protected void distributorButtonOA(ActionEvent e){
         if(sim != null && !sim.isPaused()) {
@@ -225,45 +286,29 @@ public class MainController implements Initializable {
                 });
             }
             cp.addUser();
-            this.usersListView.refresh();
+            usersListView.refresh();
         }
     }
 
     @FXML protected void saveButtonOA(ActionEvent e){
         try {
-            write();
+            if(sim != null){
+                sim.pauseSimulation();
+            }
+            cp.write();
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-
     }
 
     @FXML protected void readButtonOA(ActionEvent e){
         try{
-            read();
-        } catch (IOException e1) {
+            cp.read();
+        } catch (Exception e1) {
             e1.printStackTrace();
         }
-    }
-
-    public void write() throws IOException {
-        if(this.sim != null){
-            this.sim.pauseSimulation();
-        }
-        ControlPanel.getInstance().write();
-    }
-
-    public void read() throws IOException {  //FIXME wątki user działają w tle nawet po resecie, czas symulacji się nie synchronizuje
-        try {
-            ControlPanel.getInstance().read();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("Bad save");
-        }
-
         distributorsListView.setItems(ControlPanel.getInstance().getDistributors());
         usersListView.setItems(ControlPanel.getInstance().getUsers());
         cWorkTableView.setItems(ControlPanel.getInstance().getCWorks());
     }
-
 }

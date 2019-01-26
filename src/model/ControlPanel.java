@@ -34,16 +34,16 @@ public class ControlPanel implements Serializable {
     private volatile int movieSinglePrice;
     private volatile int liveStreamSinglePrice;
     private volatile int seriesSinglePrice;
-    private volatile int basicPrice;
-    private volatile int familyPrice;
-    private volatile int premiumPrice;
+    private IntegerProperty basicPrice;
+    private IntegerProperty familyPrice;
+    private IntegerProperty premiumPrice;
     private List<String> names;
     private List<String> distributorNames;
     private List<String> words;
     private List<String> allCountries;
     private List<String> categories;
     private IntegerProperty money;
-    private int monthsWithoutProfit;
+    private IntegerProperty monthsWithoutProfit;
     private boolean canUserBeAdded;
 
     private transient volatile ObservableList<Distributor> distributors;
@@ -58,11 +58,11 @@ public class ControlPanel implements Serializable {
         seriesSinglePrice = new Random().nextInt(5) + 1;
         liveStreamSinglePrice = new Random().nextInt(2) + 1;
 
-        basicPrice = new Random().nextInt(50) + 1;
-        familyPrice = new Random().nextInt(50) + 1;
-        premiumPrice = new Random().nextInt(20) + 1;
+        basicPrice = new SimpleIntegerProperty();
+        familyPrice = new SimpleIntegerProperty();
+        premiumPrice = new SimpleIntegerProperty();
         money = new SimpleIntegerProperty();
-        monthsWithoutProfit = 0;
+        monthsWithoutProfit = new SimpleIntegerProperty();
         canUserBeAdded = false;
 
         try {
@@ -100,7 +100,9 @@ public class ControlPanel implements Serializable {
         return userId++;
     }
 
-
+    public void deleteCWork(CWork c){
+        this.cWorks.removeIf(cWork -> cWork.equals(c));
+    }
 
     // TODO reset
     public void resetAll(){
@@ -118,7 +120,7 @@ public class ControlPanel implements Serializable {
         cWorkId = 0;
         userId = 0;
         money.setValue(0);
-        monthsWithoutProfit = 0;
+        monthsWithoutProfit.setValue(0);
     }
 
     public void pay(){
@@ -306,27 +308,35 @@ public class ControlPanel implements Serializable {
         return null;
     }
 
-    public int getBasicPrice() {
+    public IntegerProperty getBasicPrice() {
         return basicPrice;
     }
 
     public void setBasicPrice(int basicPrice) {
-        this.basicPrice = basicPrice;
+        this.basicPrice.setValue(basicPrice);
     }
 
-    public int getFamilyPrice() {
+    public IntegerProperty getFamilyPrice() {
         return familyPrice;
     }
 
     public void setFamilyPrice(int familyPrice) {
-        this.familyPrice = familyPrice;
+        this.familyPrice.setValue(familyPrice);
     }
 
-    public int getPremiumPrice() {
+    public IntegerProperty getPremiumPrice() {
         return premiumPrice;
     }
 
     public void setPremiumPrice(int premiumPrice) {
-        this.premiumPrice = premiumPrice;
+        this.premiumPrice.setValue(premiumPrice);
+    }
+
+    public IntegerProperty getMonthsWithoutProfit() {
+        return monthsWithoutProfit;
+    }
+
+    public void setMonthsWithoutProfit(int monthsWithoutProfit) {
+        this.monthsWithoutProfit.set(monthsWithoutProfit);
     }
 }

@@ -1,12 +1,15 @@
 package model;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.cinematography.CWork;
 
 import java.net.URL;
@@ -37,10 +40,10 @@ public class DistributorInfoController implements Initializable {
             this.titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
             this.cWorkTableView.setItems(d.getCWorks());
             this.cWorkTableView.setOnMouseClicked(event -> {
-                MainController.productOA(this.cWorkTableView);
+                if(event.getClickCount() == 2)
+                    MainController.productOA(this.cWorkTableView);
             });
             this.cWorkTableView.refresh();
-
         });
     }
 }
