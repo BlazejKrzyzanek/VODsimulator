@@ -1,47 +1,69 @@
 package model;
 
+import javafx.application.Platform;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.cinematography.CWork;
 
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /*
-TODO obsługa symulacji
 TODO płacenie dystrybutorom (np. na koniec każdego miesiąca)
 TODO pobieranie opłat od użytkowników
 TODO wyszukiwarka (może osobna klasa do tego)
 TODO pobieranie danych o filmach / serialach i live z imdb https://www.imdb.com/interfaces/
 TODO sprawdzanie czy biznes się opłaca (można podnieść ceny jeśli się nie będzie opłacać, ale powinno wtedy spaść prawdopodobieństwo oglądania filmu)
 TODO Dokumentacja!
+
+FIXME zrobić z tego singleton i poprawić wszystkie błędy  z serializacja zwlaszcza
  */
 
-public abstract class ControlPanel implements Serializable {
-    private static volatile int cWorkId;
-    private static volatile int userId;
-    private static volatile int movieSinglePrice;
-    private static volatile int liveStreamSinglePrice;
-    private static volatile int seriesSinglePrice;
-    private static List<String> names;
-    private static List<String> distributorNames;
-    private static List<String> words;
-    private static List<String> allCountries;
-    private static List<String> categories;
-    private static int money;
-    private static int monthsWithoutProfit;
+public class ControlPanel implements Serializable {
+    private static ControlPanel INSTANCE;
+    private volatile int cWorkId;
+    private volatile int userId;
+    private volatile int movieSinglePrice;
+    private volatile int liveStreamSinglePrice;
+    private volatile int seriesSinglePrice;
+    private volatile int basicPrice;
+    private volatile int familyPrice;
+    private volatile int premiumPrice;
+    private List<String> names;
+    private List<String> distributorNames;
+    private List<String> words;
+    private List<String> allCountries;
+    private List<String> categories;
+    private IntegerProperty money;
+    private int monthsWithoutProfit;
+    private boolean canUserBeAdded;
+
+    private transient volatile ObservableList<Distributor> distributors;
+    private transient volatile ObservableList<User> users;
+    private transient volatile ObservableList<CWork> cWorks;
 
 
-    static {
+    private ControlPanel() {
         cWorkId = 0;
         userId = 0;
-        movieSinglePrice = new Random().nextInt(10000) + 10;
-        seriesSinglePrice = new Random().nextInt(10000) + 10;
-        liveStreamSinglePrice = new Random().nextInt(10000) + 10;
-        money = 0;
+        movieSinglePrice = new Random().nextInt(5) + 1;
+        seriesSinglePrice = new Random().nextInt(5) + 1;
+        liveStreamSinglePrice = new Random().nextInt(2) + 1;
+
+        basicPrice = new Random().nextInt(50) + 1;
+        familyPrice = new Random().nextInt(50) + 1;
+        premiumPrice = new Random().nextInt(20) + 1;
+        money = new SimpleIntegerProperty();
         monthsWithoutProfit = 0;
+        canUserBeAdded = false;
 
         try {
             names = Files.readAllLines(Paths.get(".", "resources\\text", "names.txt"), Charset.forName("utf-8"));
@@ -53,76 +75,258 @@ public abstract class ControlPanel implements Serializable {
             System.out.println("File does not exist");
             e.printStackTrace();
         }
+
+        distributors = FXCollections.observableArrayList(new ArrayList<>());
+        users = FXCollections.observableArrayList(new ArrayList<>());
+        cWorks = FXCollections.observableArrayList(new ArrayList<>());
     }
 
+    public static ControlPanel getInstance(){
+        if (INSTANCE == null){
+            synchronized (ControlPanel.class){
+                if (INSTANCE == null){
+                    INSTANCE = new ControlPanel();
+                }
+            }
+        }
+        return INSTANCE;
+    }
 
-    public static synchronized int getNewCWorkId() {
+    public synchronized int getNewCWorkId() {
         return cWorkId++;
     }
-    
-    public static synchronized int getNewUserId() {
+
+    public synchronized int getNewUserId() {
         return userId++;
     }
 
 
 
     // TODO reset
-    public static void resetAll(){
+    public void resetAll(){
+        for (Distributor d: distributors){
+            d.cancel();
+        }
+        for (User u: users){
+            u.cancel();
+        }
+        canUserBeAdded = false;
+        distributors = FXCollections.observableArrayList(new ArrayList<>());
+        users = FXCollections.observableArrayList(new ArrayList<>());
+        cWorks = FXCollections.observableArrayList(new ArrayList<>());
+
         cWorkId = 0;
         userId = 0;
-        money = 0;
+        money.setValue(0);
         monthsWithoutProfit = 0;
     }
 
-    public static void pay(){
+    public void pay(){
+        for (Distributor d: distributors)
+            this.money.setValue(this.money.get() - d.getPayment());
     }
 
-    public static List<String> getNames() {
+    public void negotiate(){
+        for (Distributor d: distributors){
+            if(new Random().nextInt(100) < 15){
+                d.negotiate();
+            }
+        }
+    }
+
+    public List<String> getNames() {
         return names;
     }
 
-    public static List<String> getDistributorNames() {
+    public List<String> getDistributorNames() {
         return distributorNames;
     }
 
-    public static List<String> getWords() {
+    public List<String> getWords() {
         return words;
     }
 
-    public static List<String> getAllCountries() {
+    public List<String> getAllCountries() {
         return allCountries;
     }
 
-    public static List<String> getCategories() {
+    public List<String> getCategories() {
         return categories;
     }
 
-    public static synchronized int getMovieSinglePrice() {
+    public synchronized int getMovieSinglePrice() {
         return movieSinglePrice;
     }
 
-    public static synchronized int getLiveStreamSinglePrice() {
+    public synchronized int getLiveStreamSinglePrice() {
         return liveStreamSinglePrice;
     }
 
-    public static synchronized int getSeriesSinglePrice() {
+    public synchronized int getSeriesSinglePrice() {
         return seriesSinglePrice;
     }
 
-    public static synchronized void setMovieSinglePrice(int moviePrice) {
+    public synchronized void setMovieSinglePrice(int moviePrice) {
         movieSinglePrice = moviePrice;
     }
 
-    public static synchronized void setLiveStreamSinglePrice(int liveStreamPrice) {
+    public synchronized void setLiveStreamSinglePrice(int liveStreamPrice) {
         liveStreamSinglePrice = liveStreamPrice;
     }
 
-    public static synchronized void setSeriesSinglePrice(int seriesPrice) {
+    public synchronized void setSeriesSinglePrice(int seriesPrice) {
         seriesSinglePrice = seriesPrice;
     }
 
+    public synchronized ObservableList<Distributor> getDistributors() {
+        return distributors;
+    }
 
-    public static List<CWork> search(String pattern){
+    public synchronized void addDistributor(){
+        Distributor dist = new Distributor();
+        while(this.distributors.contains(dist)){ dist = new Distributor(); }
+
+        Thread th = new Thread(dist);
+        th.setDaemon(true);
+        th.start();
+        this.distributors.add(dist);
+        this.cWorks.addAll(dist.getCWorks());
+    }
+
+    public synchronized void addUser(){
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    User u = new User();
+                    Thread th = new Thread(u);
+                    th.setDaemon(true);
+                    th.start();
+                    if (!users.contains(u)) {
+                        users.add(u);
+                    }
+                }
+            });
+            canUserBeAdded = false;
+    }
+
+    public synchronized ObservableList<User> getUsers() {
+        return users;
+    }
+
+    public synchronized void addCWork(CWork cWork){
+        this.cWorks.add(cWork);
+        this.canUserBeAdded = true;
+    }
+
+    public ObservableList<CWork> getCWorks() {
+        return cWorks;
+    }
+
+    public synchronized void write() throws IOException {
+        ObjectOutputStream out = new ObjectOutputStream(
+                new BufferedOutputStream(
+                        new FileOutputStream("save.b")));
+        
+//        out.writeObject(names);
+//        out.writeObject(cWorkId);
+//        out.writeObject(userId);
+//        out.writeObject(movieSinglePrice);
+//        out.writeObject(liveStreamSinglePrice);
+//        out.writeObject(seriesSinglePrice);
+//        out.writeObject(names);
+//        out.writeObject(distributorNames);
+//        out.writeObject(words);
+//        out.writeObject(allCountries);
+//        out.writeObject(categories);
+//        out.writeObject(money);
+//        out.writeObject(monthsWithoutProfit);
+//        out.writeObject(canUserBeAdded);
+
+        for (Distributor d: distributors){
+            d.cancel();
+        }
+        out.writeObject(new ArrayList<>(distributors));
+
+        for (User u: users){
+            u.cancel();
+        }
+        out.writeObject(new ArrayList<>(users));
+        out.writeObject(new ArrayList<>(cWorks));
+        out.close();
+    }
+
+    public void read() throws IOException, ClassNotFoundException { // FIXME Brak zapisanego pliku exception, uruchomienie po wczytaniu  
+        ObjectInputStream in = new ObjectInputStream(
+                new BufferedInputStream(
+                        new FileInputStream("save.b")));
+        
+
+        distributors = FXCollections.observableArrayList((ArrayList<Distributor>) in.readObject());
+        users = FXCollections.observableArrayList((ArrayList<User>) in.readObject());
+        cWorks = FXCollections.observableArrayList((ArrayList<CWork>) in.readObject());
+
+        for (Distributor d: distributors){
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    Thread th = new Thread(d);
+                    th.setDaemon(true);
+                    th.start();
+                }
+            });
+        }
+
+        for (User u: users){
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    Thread th = new Thread(u);
+                    th.setDaemon(true);
+                    th.start();
+                }
+            });
+        }
+
+        in.close();
+    }
+
+    public boolean isCanUserBeAdded() {
+        return canUserBeAdded;
+    }
+
+    public IntegerProperty getMoney() {
+        return money;
+    }
+
+    public void addMoney(int m){
+        money.setValue(money.get() + m);
+    }
+
+    public List<CWork> search(String pattern){
         return null;
+    }
+
+    public int getBasicPrice() {
+        return basicPrice;
+    }
+
+    public void setBasicPrice(int basicPrice) {
+        this.basicPrice = basicPrice;
+    }
+
+    public int getFamilyPrice() {
+        return familyPrice;
+    }
+
+    public void setFamilyPrice(int familyPrice) {
+        this.familyPrice = familyPrice;
+    }
+
+    public int getPremiumPrice() {
+        return premiumPrice;
+    }
+
+    public void setPremiumPrice(int premiumPrice) {
+        this.premiumPrice = premiumPrice;
     }
 }

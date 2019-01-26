@@ -3,6 +3,7 @@ package model.cinematography;
 import model.ControlPanel;
 import model.Distributor;
 
+import java.io.Serializable;
 import java.util.List;
 
 //TODO Lista aktorów
@@ -10,19 +11,27 @@ import java.util.List;
 /**
  * Represents movie as CWork
  */
-public class Movie extends CWork {
+public class Movie extends CWork{
     private int duration; // minutes
-    private int singlePrice; // cents
+    private int singlePrice; // $
     private int availableTime; // minutes
     private Promotion promotion;
 
     /**
      * Creates a random movie
      */
+    public Movie(Distributor distributor, int id){
+        super(distributor, id);
+        this.duration = r.nextInt(61) + 20;
+        this.singlePrice = ControlPanel.getInstance().getMovieSinglePrice(); // between 0.1$ and 100$
+        this.availableTime = r.nextInt(10081) + 1440; // between one day and one week
+        this.promotion = null;
+    }
+
     public Movie(Distributor distributor){
         super(distributor);
         this.duration = r.nextInt(61) + 20;
-        this.singlePrice = ControlPanel.getMovieSinglePrice(); // between 0.1$ and 100$
+        this.singlePrice = ControlPanel.getInstance().getMovieSinglePrice(); // between 0.1$ and 100$
         this.availableTime = r.nextInt(10081) + 1440; // between one day and one week
         this.promotion = null;
     }

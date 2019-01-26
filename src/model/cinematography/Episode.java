@@ -9,12 +9,10 @@ TODO dokumentacja!
  */
 
 public class Episode extends Movie{
-    private int number;
     private LocalDate releaseDate;
 
-    public Episode(Distributor distributor, int number) {
-        super(distributor);
-        this.number = number;
+    public Episode(Distributor distributor, int episodeId) {
+        super(distributor, episodeId);
         this.releaseDate = createReleaseDate(1950,2020);
 
     }
@@ -38,8 +36,7 @@ public class Episode extends Movie{
     @Override
     public String toString() {
         return "Episode{" +
-                "number=" + number +
-                ", title=" + this.getTitle() +
+                "title=" + this.getTitle() +
                 ", releaseDate=" + releaseDate +
                 "}\n";
     }

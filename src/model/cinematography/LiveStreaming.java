@@ -4,9 +4,8 @@ import model.ControlPanel;
 import model.Distributor;
 import model.Simulation;
 
-import java.time.LocalDate;
+import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /*
 TODO Konstruktor bezparametrowy powinien wypełniać live losowymi parametrami (może z jakiegoś pliku?)
@@ -14,12 +13,12 @@ TODO Dokumentacja!
  */
 
 public class LiveStreaming extends CWork{
-    private float singlePrice;
+    private int singlePrice;
     private LocalDateTime displayDateTime;
 
     public LiveStreaming(Distributor distributor) {
         super(distributor);
-        this.singlePrice = ControlPanel.getLiveStreamSinglePrice();
+        this.singlePrice = ControlPanel.getInstance().getLiveStreamSinglePrice();
         this.displayDateTime = createDateTime(1, 30);
     }
 
@@ -32,11 +31,11 @@ public class LiveStreaming extends CWork{
         return Simulation.getDateTime().plusDays(days).withHour(hour).withMinute(min);
     }
 
-    public float getSinglePrice() {
+    public int getSinglePrice() {
         return singlePrice;
     }
 
-    public void setSinglePrice(float singlePrice) {
+    public void setSinglePrice(int singlePrice) {
         this.singlePrice = singlePrice;
     }
 

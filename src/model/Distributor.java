@@ -1,5 +1,7 @@
 package model;
 
+import javafx.beans.value.ObservableIntegerValue;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -8,6 +10,7 @@ import model.cinematography.LiveStreaming;
 import model.cinematography.Movie;
 import model.cinematography.Series;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,17 +23,15 @@ TODO generator filmów/ seriali/ live
 TODO dokumentacja!
  */
 
-public class Distributor extends Task<Integer> {
+public class Distributor extends Task<Integer> implements Serializable {
     private String distributorName;
-    private int payment = 0;
+    private int payment = 10;
     private int money;
     private ObservableList<CWork> cWorks;
     private boolean isPaused;
 
     public Distributor() {
         this.distributorName = createName();
-        negotiate();
-        this.money = 2;
         this.cWorks = FXCollections.observableArrayList(new ArrayList<>());
         this.isPaused = false;
     }
@@ -56,20 +57,20 @@ public class Distributor extends Task<Integer> {
     }
 
     private String createName(){
-        String name = ControlPanel.getDistributorNames().get(
-                new Random().nextInt(ControlPanel.getDistributorNames().size())); // Random distributorName from list
-        String country = ControlPanel.getAllCountries().get(
-                new Random().nextInt(ControlPanel.getAllCountries().size())); // Random country from list
+        String name = ControlPanel.getInstance().getDistributorNames().get(
+                new Random().nextInt(ControlPanel.getInstance().getDistributorNames().size())); // Random distributorName from list
+        String country = ControlPanel.getInstance().getAllCountries().get(
+                new Random().nextInt(ControlPanel.getInstance().getAllCountries().size())); // Random country from list
         return(name + " " + country);
 
     }
 
-    public void addMoney(int money){
-        this.money += money;
-    }
-
     public void negotiate(){
-        this.payment = 1000;
+        ControlPanel cp = ControlPanel.getInstance();
+        int tmp = new Random().nextInt((cp.getMovieSinglePrice() +
+                cp.getLiveStreamSinglePrice() +
+                cp.getSeriesSinglePrice()));
+        this.payment = tmp * this.cWorks.size() + cp.getUsers().size() / 20;
     }
 
     public String getDistributorName() {
@@ -95,21 +96,24 @@ public class Distributor extends Task<Integer> {
             case 0:
                 cWork = new Movie(this);
                 this.cWorks.add(cWork);
+                ControlPanel.getInstance().addCWork(cWork);
                 return cWork;
             case 1:
                 cWork = new Series(this);
                 this.cWorks.add(cWork);
+                ControlPanel.getInstance().addCWork(cWork);
                 return cWork;
             case 2:
                 cWork = new LiveStreaming(this);
                 this.cWorks.add(cWork);
+                ControlPanel.getInstance().addCWork(cWork);
                 return cWork;
 
                 default: return null;
         }
     }
 
-    public ObservableList<CWork> getcWorks() {
+    public ObservableList<CWork> getCWorks() {
         return cWorks;
     }
 

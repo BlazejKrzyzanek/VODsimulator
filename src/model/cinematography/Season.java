@@ -2,6 +2,7 @@ package model.cinematography;
 
 import model.Distributor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -11,7 +12,7 @@ import java.util.Random;
 TODO Dokumentacja!
  */
 
-public class Season {
+public class Season implements Serializable {
     private Distributor distributor;
     private int number;
     private List<Episode> episodes;

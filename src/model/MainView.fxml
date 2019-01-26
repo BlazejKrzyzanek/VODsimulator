@@ -17,34 +17,40 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.MainController">
    <opaqueInsets>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </opaqueInsets>
    <bottom>
       <GridPane fx:id="SimulationTimeLabel" hgap="10.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="17.5" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="17.5" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonOA" text="reset" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonOA" text="START" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#pauseButtonOA" text="pause" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonOA" text="reset" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonOA" text="START" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#pauseButtonOA" text="pause" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button fx:id="fasterButton" mnemonicParsing="false" onAction="#fasterButtonOA" text="faster" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <Label fx:id="simulationTimeLabel" text="Simulation Time" GridPane.columnIndex="5" GridPane.halignment="CENTER" />
+            <Label fx:id="moneyLabel" text="1000" textAlignment="CENTER" textFill="#0ea800" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" text="\$" textFill="#0ea800" GridPane.halignment="RIGHT" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -62,8 +68,9 @@
             <Slider fx:id="premiumPriceSlider" />
             <Label text="Family subscription" />
             <Slider fx:id="familyPriceSlider" />
-            <Label text="Single" />
             <Slider fx:id="singlePriceSlider" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonOA" prefHeight="25.0" prefWidth="142.0" text="Save" />
+            <Button fx:id="readButton" mnemonicParsing="false" onAction="#readButtonOA" prefHeight="25.0" prefWidth="142.0" text="Read" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="15.0" />
@@ -97,22 +104,30 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="cWorkTableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="cWorkTableView" prefHeight="200.0" prefWidth="450.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn fx:id="cWorksTypeColumn" prefWidth="98.0" resizable="false" text="Type" />
-                              <TableColumn fx:id="cWorksTitleColumn" prefWidth="347.0" resizable="false" text="Title" />
+                              <TableColumn fx:id="cWorksIDColumn" editable="false" maxWidth="50.0" minWidth="50.0" prefWidth="-1.0" resizable="false" text="ID" />
+                            <TableColumn fx:id="cWorksTypeColumn" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="-1.0" resizable="false" text="Type" />
+                              <TableColumn fx:id="cWorksTitleColumn" editable="false" minWidth="300.0" prefWidth="-1.0" text="Title" />
                           </columns>
                            <effect>
                               <InnerShadow blurType="TWO_PASS_BOX" />
                            </effect>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                         </TableView>
                      </children></AnchorPane>
               </content>
             </Tab>
             <Tab text="Actors">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
+               <content>
+                  <ListView prefHeight="200.0" prefWidth="200.0">
+                     <effect>
+                        <InnerShadow blurType="TWO_PASS_BOX" />
+                     </effect>
+                  </ListView>
+               </content>
             </Tab>
         </tabs>
          <BorderPane.margin>

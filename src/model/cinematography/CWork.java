@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import model.ControlPanel;
 import model.Distributor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -12,13 +13,15 @@ import java.util.Random;
 /**
  * Represents any kind of cinematographic work
  */
-public abstract class CWork {
+public abstract class CWork implements Serializable {
+
+    private String type;
+    private String title;
 
     private Distributor distributor;
     private String category;
-    private final int id;
-    private Image posterImage;
-    private String title;
+    private volatile int id;
+    private int imageId;
     private String description;
     private List<String> countryList;
     private List<Integer> productionYearList;
@@ -29,11 +32,18 @@ public abstract class CWork {
      * Creates new CWork with random parameters, using words from appropriate lists
      */
     public CWork(Distributor distributor){
+        this(distributor, ControlPanel.getInstance().getNewCWorkId());
+    }
+
+    public CWork(Distributor distributor, int id){
         this.distributor = distributor;
+        this.type = this.getClass().getSimpleName();
         this.r = new Random();
-        this.id = ControlPanel.getNewCWorkId();
+        synchronized (this) {
+            this.id = id;
+        }
+        this.imageId = new Random().nextInt(17);
         this.category = createCategory();
-        this.posterImage = createPoster();
         this.title = createText(3,5);
         this.description = createText(20,50);
         this.countryList = createCountryList(1, 5);
@@ -41,6 +51,9 @@ public abstract class CWork {
         this.userRating = r.nextFloat() * (10);
     }
 
+    public int getImageId() {
+        return imageId;
+    }
 
     public Distributor getDistributor(){
         return distributor;
@@ -52,8 +65,8 @@ public abstract class CWork {
      * @return random category name
      */
     private String createCategory() {
-        int i = r.nextInt(ControlPanel.getCategories().size());
-        return ControlPanel.getCategories().get(i);
+        int i = r.nextInt(ControlPanel.getInstance().getCategories().size());
+        return ControlPanel.getInstance().getCategories().get(i);
     }
 
     /**
@@ -96,8 +109,8 @@ public abstract class CWork {
         int length = r.nextInt((maxLen - minLen) + 1) + minLen;
         int idx;
         for(int i=0; i<length; i++) {
-            idx = r.nextInt(ControlPanel.getAllCountries().size());
-            countryList.add(ControlPanel.getAllCountries().get(idx));
+            idx = r.nextInt(ControlPanel.getInstance().getAllCountries().size());
+            countryList.add(ControlPanel.getInstance().getAllCountries().get(idx));
         }
         return countryList;
     }
@@ -111,12 +124,12 @@ public abstract class CWork {
     private String createText(int minLen, int maxLen) {
         int length = r.nextInt((maxLen - minLen) + 1) + minLen - 1;
         StringBuilder text = new StringBuilder();
-        int wordIdx = r.nextInt(ControlPanel.getWords().size());
+        int wordIdx = r.nextInt(ControlPanel.getInstance().getWords().size());
 
-        text.append(ControlPanel.getWords().get(wordIdx).substring(0, 1).toUpperCase());
+        text.append(ControlPanel.getInstance().getWords().get(wordIdx).substring(0, 1).toUpperCase());
         for (int i=0; i<length; i++){
-            wordIdx = r.nextInt(ControlPanel.getWords().size());
-            text.append(ControlPanel.getWords().get(wordIdx));
+            wordIdx = r.nextInt(ControlPanel.getInstance().getWords().size());
+            text.append(ControlPanel.getInstance().getWords().get(wordIdx));
             if (i % 10 == 9){
                 text.append(".\n");
             } else {
@@ -125,21 +138,6 @@ public abstract class CWork {
         }
         return text.toString();
     }
-
-    // TODO better image choosing, now it is not safe
-    /**
-     * Creates a poster image
-     * @return random poster image
-     */
-    private Image createPoster(){
-        Integer randPoster = new Random().nextInt(7);
-        String posterUrl = "/img/" + randPoster.toString() + ".jpg";
-        Image image;
-        // image = new Image(posterUrl); // FIXME throws Exception? Ask someone, it executes forever
-        long end = System.currentTimeMillis();
-        return null;
-    }
-
     /**
      * @return CWork title
      */
@@ -153,6 +151,14 @@ public abstract class CWork {
      */
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     /**
@@ -222,21 +228,6 @@ public abstract class CWork {
      */
     public int getId() {
         return id;
-    }
-
-    /**
-     * @return poster image
-     */
-    public Image getPosterImage() {
-        return posterImage;
-    }
-
-    /**
-     * Sets a poster image
-     * @param posterImage new image
-     */
-    public void setPosterImage(Image posterImage) {
-        this.posterImage = posterImage;
     }
 
     @Override

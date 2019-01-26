@@ -30,7 +30,7 @@ public class Main extends Application {
         MainController controller = new MainController();
         loader.setController(controller);
 
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root);
 
         primaryStage.setTitle("Symulator systemu VOD");
         primaryStage.setScene(scene);

@@ -19,7 +19,7 @@ public class Series extends CWork {
     public Series(Distributor distributor) {
         super(distributor);
         this.seasons = createSeasons(2,10, distributor);
-        this.singlePrice = ControlPanel.getSeriesSinglePrice();
+        this.singlePrice = ControlPanel.getInstance().getSeriesSinglePrice();
     }
 
     private List<Season> createSeasons(int minLen, int maxLen, Distributor distributor){

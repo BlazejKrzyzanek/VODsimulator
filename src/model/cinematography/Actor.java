@@ -2,9 +2,10 @@ package model.cinematography;
 
 import javafx.scene.image.Image;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Actor {
+public class Actor implements Serializable {
     private String firstname;
     private String surname;
     private Image image;

@@ -1,5 +1,6 @@
 package model.cinematography;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
 import java.util.Random;
@@ -8,7 +9,7 @@ import java.util.logging.Logger;
 /**
  * Represents promotion with selected discount
  */
-public class Promotion {
+public class Promotion implements Serializable {
     private int duration;
     private int discountPercent;
     protected final Logger log = Logger.getLogger(getClass().getName());

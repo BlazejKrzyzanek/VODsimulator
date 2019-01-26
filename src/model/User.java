@@ -1,7 +1,13 @@
 package model;
 
+import javafx.application.Platform;
 import javafx.concurrent.Task;
+import model.cinematography.CWork;
+import model.cinematography.LiveStreaming;
+import model.cinematography.Movie;
+import model.cinematography.Series;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Random;
@@ -13,16 +19,20 @@ TODO Losowe kupowanie filmu/serialu/live
 TODO Dokumentacja!
  */
 
-public class User extends Task<Integer> {
+public class User extends Task<Integer> implements Serializable {
+    private ControlPanel cp;
     private volatile int id;
     private LocalDate birthDate;
+    private int genre;
     private String email;
     private String cardNumber;
     private VodSubscription vodSubscription;
     private boolean isPaused;
 
     public User() {
-        this.id = ControlPanel.getNewUserId();
+        this.cp = ControlPanel.getInstance();
+        this.id = cp.getNewUserId();
+        this.genre = new Random().nextInt(2);
         System.out.println(this.id);
         this.birthDate = createBirthDate();
         this.email = createEmail();
@@ -33,15 +43,69 @@ public class User extends Task<Integer> {
 
     @Override
     protected Integer call() throws Exception {
-        int randomMinutes;
+        int randomCWorkId, randomCWorkMinutes;
+        CWork randomCWork;
         while (!isCancelled() && !Thread.currentThread().isInterrupted()){
             try {
-                if (!this.isPaused) {
-                    randomMinutes = new Random().nextInt(430)+1; // TODO watching accurately to movie length
-                    System.out.println(this.getId() + " Oglądam");
+                if (!this.isPaused && cp.getCWorks().size() > 0) {
+                    randomCWorkId = new Random().nextInt(cp.getCWorks().size());
+                    randomCWork = cp.getCWorks().get(randomCWorkId);
+                    int p = new Random().nextInt(1000);
+                    if(this.vodSubscription == null &&  p < 3){
+                        this.vodSubscription = new VodSubscription();
+                        Platform.runLater(new Runnable(){
+                            @Override
+                            public void run() {
+                                cp.addMoney(vodSubscription.getPrice());
+                            }
+                        });
+                    } else if (this.vodSubscription != null &&
+                            Simulation.getDateTime().toLocalDate().isAfter(this.vodSubscription.getExpirationDate())){
+                        this.vodSubscription = null;
+                    }
+                    switch (randomCWork.getType()){
+                        case "Movie":
+                            Movie m = (Movie) randomCWork;
+                            randomCWorkMinutes = m.getDuration();
+                            if(vodSubscription != null)
+                                Platform.runLater(new Runnable(){
+                                    @Override
+                                    public void run() {
+                                        cp.addMoney(m.getSinglePrice());
+                                    }
+                                });
+                            break;
+                        case "LiveStreaming":
+                            LiveStreaming l = (LiveStreaming) randomCWork;
+                            randomCWorkMinutes = new Random().nextInt(400);
+                            if(vodSubscription != null)
+                                Platform.runLater(new Runnable(){
+                                    @Override
+                                    public void run() {
+                                        cp.addMoney(l.getSinglePrice());
+                                    }
+                                });
+                            break;
+                        case "Series":
+                            Series s = (Series) randomCWork;
+                            int a = new Random().nextInt(s.getSeasons().size());
+                            int b = new Random().nextInt(s.getSeasons().get(a).getEpisodes().size());
+                            randomCWorkMinutes = s.getSeasons().get(a).getEpisodes().get(b).getDuration();
+                            if(vodSubscription != null)
+                                Platform.runLater(new Runnable(){
+                                    @Override
+                                    public void run() {
+                                        cp.addMoney(s.getSeasons().get(a).getEpisodes().get(b).getSinglePrice());
+                                    }
+                                });
+                            break;
+                            default:
+                                throw new Exception("Coś poszło nie tak");
+                    }
+                    System.out.println(this.getId() + " Oglądam " + randomCWork.getType());
                     //watch();
                     System.out.println(this.getId() + " ide Spać");
-                    Thread.sleep(Simulation.simMinutesToRealMillis(randomMinutes)); // TODO: Sleeping accurately to changing speed
+                    Thread.sleep(Simulation.simMinutesToRealMillis(randomCWorkMinutes));
                 } else {
                     Thread.sleep(Simulation.ONE_TICK);
                 }
@@ -72,7 +136,7 @@ public class User extends Task<Integer> {
     }
 
     private String createEmail() {
-        String email = ControlPanel.getWords().get(new Random().nextInt(ControlPanel.getWords().size()));
+        String email = ControlPanel.getInstance().getWords().get(new Random().nextInt(ControlPanel.getInstance().getWords().size()));
         return email + "@mail.com";
     }
 
@@ -111,6 +175,10 @@ public class User extends Task<Integer> {
     }
 
     public void stopLoop(){ this.cancel(); }
+
+    public int getGenre() {
+        return genre;
+    }
 
     @Override
     public boolean equals(Object o) {

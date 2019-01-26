@@ -1,10 +1,12 @@
 package model.cinematography;
 
+import java.io.Serializable;
+
 /*
 TODO dokumentacja
 TODO Odtwarzanie
  */
-public class Trailer {
+public class Trailer implements Serializable {
     private String sourceURL;
 
     public Trailer(String sourceURL) {
