@@ -1,6 +1,11 @@
 package model.cinematography;
 
+import model.Simulation;
+
+import java.beans.SimpleBeanInfo;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Objects;
 import java.util.Random;
@@ -11,17 +16,18 @@ import java.util.logging.Logger;
  */
 public class Promotion implements Serializable {
     private int duration;
+    private LocalDateTime expirationDateTime;
     private int discountPercent;
     protected final Logger log = Logger.getLogger(getClass().getName());
 
     /**
-     * Creates random promotion in duration between 120 - 1440 minutes (2 to 24 hour)
+     * Creates random promotion in duration between minutes
      */
-    public Promotion(){this(new Random().nextInt(1321) + 120);}
+    public Promotion(){this(new Random().nextInt(13210) + 1200);}
 
     /**
      * Creates new promotion from now for duration (minutes)
-     * @param duration
+     * @param duration duration of promotion in minutes
      */
     public Promotion(int duration) {
         this(duration, Promotion.createDiscount());
@@ -29,11 +35,12 @@ public class Promotion implements Serializable {
 
     /**
      * Creates new promotion from now for duration (minutes) with the appropriate discount (percent)
-     * @param duration
-     * @param discountPercent
+     * @param duration duration of promotion in minutes
+     * @param discountPercent discount
      */
     public Promotion(int duration, int discountPercent) {
         this.duration = duration;
+        this.expirationDateTime = Simulation.getDateTime().plusMinutes(duration);
         this.discountPercent = discountPercent;
     }
 
@@ -41,7 +48,7 @@ public class Promotion implements Serializable {
      * Returns random percent of discount in range [0, 100]
      * @return int
      */
-    public static int createDiscount(){
+    private static int createDiscount(){
         return Promotion.createDiscount(0,100);
     }
 
@@ -50,16 +57,8 @@ public class Promotion implements Serializable {
      * @param a min discount > 0
      * @param b max discount <= 100
      * @return random percent of discount in range
-     * @throws IllegalArgumentException
      */
-    public static int createDiscount(int a, int b){
-        try {
-            if (a >= b || a < 0 || b > 100) {
-                throw new IllegalArgumentException("a must be smaller than  b");
-            }
-        } catch (IllegalArgumentException e){
-            System.out.println((char)27 + "[33m" + e.getMessage() + (char)27 + "[0m");
-        }
+    private static int createDiscount(int a, int b){
         Random generator = new Random();
         return generator.nextInt((b-a)+1) + a;
     }
@@ -75,13 +74,7 @@ public class Promotion implements Serializable {
      * @param duration sets duration of promotion (in minutes)
      */
     public void setDuration(int duration) {
-        try {
-            if (duration < 1)
-                throw new IllegalArgumentException("Duration must be positive");
-            this.duration = duration;
-        } catch (IllegalArgumentException e){
-            System.out.println((char)27 + "[33m" + e.getMessage() + (char)27 + "[0m");
-        }
+        this.duration = duration;
     }
 
     /**
@@ -92,24 +85,24 @@ public class Promotion implements Serializable {
     }
 
     /**
-     * Sets discount percent from range [0,100]
-     * @param discountPercent
+     * Sets discount percent in range [0,100]
+     * @param discountPercent percent in range [0,100]
      */
     public void setDiscountPercent(int discountPercent) {
-        try {
-            if (discountPercent < 0 || discountPercent > 100)
-                throw new IllegalArgumentException("discount percent not in range [0,100]");
-            this.discountPercent = discountPercent;
-        }catch (IllegalArgumentException e){
-            System.out.println((char)27 + "[33m" + e.getMessage() + (char)27 + "[0m");
-        }
+        this.discountPercent = discountPercent;
+    }
+
+    public LocalDateTime getExpirationDateTime() {
+        return expirationDateTime;
+    }
+
+    public void setExpirationDateTime(LocalDateTime expirationDateTime) {
+        this.expirationDateTime = expirationDateTime;
     }
 
     @Override
     public String toString() {
-        return "Promotion{" +
-                "duration=" + duration +
-                ", discountPercent=" + discountPercent +
-                '}';
+        return "-" + discountPercent +
+                "%!";
     }
 }

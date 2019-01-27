@@ -1,27 +1,32 @@
 package model.cinematography;
 
-import model.ControlPanel;
 import model.Distributor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-TODO Lista aktorów
-TODO Dokumentacja!
+/**
+ * Represents Tv series
  */
-
 public class Series extends CWork {
-
-    private int singlePrice;
     private List<Season> seasons;
 
+    /**
+     * Creates new series with seasons
+     * @param distributor creator
+     */
     public Series(Distributor distributor) {
         super(distributor);
         this.seasons = createSeasons(2,10, distributor);
-        this.singlePrice = ControlPanel.getInstance().getSeriesSinglePrice();
     }
 
+    /**
+     * Creates seasons
+     * @param minLen
+     * @param maxLen
+     * @param distributor
+     * @return
+     */
     private List<Season> createSeasons(int minLen, int maxLen, Distributor distributor){
         if (minLen >= maxLen)
             throw new IllegalArgumentException("minLen must be smaller than maxLen");
@@ -35,14 +40,13 @@ public class Series extends CWork {
 
     }
 
+    /**
+     * @return list of seasons
+     */
     public List<Season> getSeasons() {
         return seasons;
     }
 
-    public void setSeasons(List<Season> seasons) {
-        this.seasons.clear();
-        this.seasons.addAll(seasons);
-    }
 
     @Override
     public String toString() {

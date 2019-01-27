@@ -2,9 +2,7 @@ package model;
 
 import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.cinematography.CWork;
@@ -14,7 +12,8 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
+
+import static java.lang.Thread.sleep;
 
 /*
 TODO płacenie dystrybutorom (np. na koniec każdego miesiąca)
@@ -27,16 +26,17 @@ TODO Dokumentacja!
 FIXME zrobić z tego singleton i poprawić wszystkie błędy  z serializacja zwlaszcza
  */
 
+/**
+ * Singleton class which controls simulation objects
+ */
 public class ControlPanel implements Serializable {
     private static ControlPanel INSTANCE;
     private volatile int cWorkId;
     private volatile int userId;
-    private volatile int movieSinglePrice;
-    private volatile int liveStreamSinglePrice;
-    private volatile int seriesSinglePrice;
-    private IntegerProperty basicPrice;
-    private IntegerProperty familyPrice;
-    private IntegerProperty premiumPrice;
+    private volatile int singlePrice;
+    private volatile int basicPrice;
+    private volatile int familyPrice;
+    private volatile int premiumPrice;
     private List<String> names;
     private List<String> distributorNames;
     private List<String> words;
@@ -54,13 +54,11 @@ public class ControlPanel implements Serializable {
     private ControlPanel() {
         cWorkId = 0;
         userId = 0;
-        movieSinglePrice = new Random().nextInt(5) + 1;
-        seriesSinglePrice = new Random().nextInt(5) + 1;
-        liveStreamSinglePrice = new Random().nextInt(2) + 1;
+        singlePrice = 0;
 
-        basicPrice = new SimpleIntegerProperty();
-        familyPrice = new SimpleIntegerProperty();
-        premiumPrice = new SimpleIntegerProperty();
+        basicPrice = 0;
+        familyPrice = 0;
+        premiumPrice = 0;
         money = new SimpleIntegerProperty();
         monthsWithoutProfit = new SimpleIntegerProperty();
         canUserBeAdded = false;
@@ -81,6 +79,9 @@ public class ControlPanel implements Serializable {
         cWorks = FXCollections.observableArrayList(new ArrayList<>());
     }
 
+    /**
+     * @return instance of ControlPanel
+     */
     public static ControlPanel getInstance(){
         if (INSTANCE == null){
             synchronized (ControlPanel.class){
@@ -92,19 +93,31 @@ public class ControlPanel implements Serializable {
         return INSTANCE;
     }
 
+    /**
+     * @return new unique ID of CWork
+     */
     public synchronized int getNewCWorkId() {
         return cWorkId++;
     }
 
-    public synchronized int getNewUserId() {
+    /**
+     * @return new unique User ID
+     */
+    synchronized int getNewUserId() {
         return userId++;
     }
 
-    public void deleteCWork(CWork c){
+    /**
+     * @param c CWork to delete
+     */
+    void deleteCWork(CWork c){
         this.cWorks.removeIf(cWork -> cWork.equals(c));
     }
 
-    // TODO reset
+    /**
+     * Sets all fields to default
+     * FIXME: Lepsze zatrzymywanie wątków
+     */
     public void resetAll(){
         for (Distributor d: distributors){
             d.cancel();
@@ -112,22 +125,28 @@ public class ControlPanel implements Serializable {
         for (User u: users){
             u.cancel();
         }
+
         canUserBeAdded = false;
         distributors = FXCollections.observableArrayList(new ArrayList<>());
         users = FXCollections.observableArrayList(new ArrayList<>());
         cWorks = FXCollections.observableArrayList(new ArrayList<>());
-
         cWorkId = 0;
         userId = 0;
         money.setValue(0);
         monthsWithoutProfit.setValue(0);
     }
 
+    /**
+     * Paying distributors
+     */
     public void pay(){
         for (Distributor d: distributors)
             this.money.setValue(this.money.get() - d.getPayment());
     }
 
+    /**
+     * Negotiating new payment with distributors
+     */
     public void negotiate(){
         for (Distributor d: distributors){
             if(new Random().nextInt(100) < 15){
@@ -136,58 +155,68 @@ public class ControlPanel implements Serializable {
         }
     }
 
+    /**
+     * @return list of people first names
+     */
     public List<String> getNames() {
         return names;
     }
 
-    public List<String> getDistributorNames() {
+    /**
+     * @return list of distributor names
+     */
+    List<String> getDistributorNames() {
         return distributorNames;
     }
 
+    /**
+     * @return list of all english words
+     */
     public List<String> getWords() {
         return words;
     }
 
+    /**
+     * @return list of all countries names
+     */
     public List<String> getAllCountries() {
         return allCountries;
     }
 
+    /**
+     * @return list of CWork categories
+     */
     public List<String> getCategories() {
         return categories;
     }
 
-    public synchronized int getMovieSinglePrice() {
-        return movieSinglePrice;
+    /**
+     * @param price new single price
+     */
+    public void setSinglePrice(int price){
+        this.singlePrice = price;
     }
 
-    public synchronized int getLiveStreamSinglePrice() {
-        return liveStreamSinglePrice;
+    /**
+     * @return single price
+     */
+    public int getSinglePrice() {
+        return singlePrice;
     }
 
-    public synchronized int getSeriesSinglePrice() {
-        return seriesSinglePrice;
-    }
-
-    public synchronized void setMovieSinglePrice(int moviePrice) {
-        movieSinglePrice = moviePrice;
-    }
-
-    public synchronized void setLiveStreamSinglePrice(int liveStreamPrice) {
-        liveStreamSinglePrice = liveStreamPrice;
-    }
-
-    public synchronized void setSeriesSinglePrice(int seriesPrice) {
-        seriesSinglePrice = seriesPrice;
-    }
-
+    /**
+     * @return Observable list of distributors
+     */
     public synchronized ObservableList<Distributor> getDistributors() {
         return distributors;
     }
 
+    /**
+     * Adds new running distributor to list
+     */
     public synchronized void addDistributor(){
         Distributor dist = new Distributor();
         while(this.distributors.contains(dist)){ dist = new Distributor(); }
-
         Thread th = new Thread(dist);
         th.setDaemon(true);
         th.start();
@@ -195,148 +224,198 @@ public class ControlPanel implements Serializable {
         this.cWorks.addAll(dist.getCWorks());
     }
 
+    /**
+     * Adds new running user to list
+     */
     public synchronized void addUser(){
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    User u = new User();
-                    Thread th = new Thread(u);
-                    th.setDaemon(true);
-                    th.start();
-                    if (!users.contains(u)) {
-                        users.add(u);
-                    }
+            Platform.runLater(() -> {
+                User u = new User();
+                Thread th = new Thread(u);
+                th.setDaemon(true);
+                th.start();
+                if (!users.contains(u)) {
+                    users.add(u);
                 }
             });
             canUserBeAdded = false;
     }
 
+    /**
+     * @return Observable list of users
+     */
     public synchronized ObservableList<User> getUsers() {
         return users;
     }
 
-    public synchronized void addCWork(CWork cWork){
+    /**
+     * @param cWork new CWork to add
+     */
+    synchronized void addCWork(CWork cWork){
         this.cWorks.add(cWork);
         this.canUserBeAdded = true;
     }
 
+    /**
+     * @return Observable list of CWorks
+     */
     public ObservableList<CWork> getCWorks() {
         return cWorks;
     }
 
+    /**
+     * Writing actual simulation state to file.
+     * FIXME Obiekty Observable sie nie serializuja, do poprawienia
+     * @throws IOException
+     */
     public synchronized void write() throws IOException {
-        ObjectOutputStream out = new ObjectOutputStream(
-                new BufferedOutputStream(
-                        new FileOutputStream("save.b")));
-        
-//        out.writeObject(names);
+//        ObjectOutputStream out = new ObjectOutputStream(
+//                new BufferedOutputStream(
+//                        new FileOutputStream("save.b")));
+//
 //        out.writeObject(cWorkId);
 //        out.writeObject(userId);
-//        out.writeObject(movieSinglePrice);
-//        out.writeObject(liveStreamSinglePrice);
-//        out.writeObject(seriesSinglePrice);
+//        out.writeObject(singlePrice);
+//        out.writeObject(basicPrice);
+//        out.writeObject(familyPrice);
+//        out.writeObject(premiumPrice);
 //        out.writeObject(names);
 //        out.writeObject(distributorNames);
 //        out.writeObject(words);
 //        out.writeObject(allCountries);
 //        out.writeObject(categories);
-//        out.writeObject(money);
-//        out.writeObject(monthsWithoutProfit);
+//        out.writeObject(money.get());
+//        out.writeObject(monthsWithoutProfit.get());
 //        out.writeObject(canUserBeAdded);
-
-        for (Distributor d: distributors){
-            d.cancel();
-        }
-        out.writeObject(new ArrayList<>(distributors));
-
-        for (User u: users){
-            u.cancel();
-        }
-        out.writeObject(new ArrayList<>(users));
-        out.writeObject(new ArrayList<>(cWorks));
-        out.close();
+//
+////        out.writeObject(new ArrayList<Distributor>(distributors).toString());
+////        out.writeObject(new ArrayList<User>(users).toString());
+////        out.writeObject(new ArrayList<CWork>(cWorks).toString());
+//        out.close();
     }
 
-    public void read() throws IOException, ClassNotFoundException { // FIXME Brak zapisanego pliku exception, uruchomienie po wczytaniu  
-        ObjectInputStream in = new ObjectInputStream(
-                new BufferedInputStream(
-                        new FileInputStream("save.b")));
-        
-
-        distributors = FXCollections.observableArrayList((ArrayList<Distributor>) in.readObject());
-        users = FXCollections.observableArrayList((ArrayList<User>) in.readObject());
-        cWorks = FXCollections.observableArrayList((ArrayList<CWork>) in.readObject());
-
-        for (Distributor d: distributors){
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    Thread th = new Thread(d);
-                    th.setDaemon(true);
-                    th.start();
-                }
-            });
-        }
-
-        for (User u: users){
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    Thread th = new Thread(u);
-                    th.setDaemon(true);
-                    th.start();
-                }
-            });
-        }
-
-        in.close();
+    /**
+     * Read simulation state from save file
+     * FIXME: trzeba zaczac od naprawienia zapisu
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public void read() throws IOException, ClassNotFoundException {
+//        ObjectInputStream in = new ObjectInputStream(
+//                new BufferedInputStream(
+//                        new FileInputStream("save.b")));
+//
+//
+//        distributors = FXCollections.observableArrayList((ArrayList<Distributor>) in.readObject());
+//        users = FXCollections.observableArrayList((ArrayList<User>) in.readObject());
+//        cWorks = FXCollections.observableArrayList((ArrayList<CWork>) in.readObject());
+//
+//        for (Distributor d: distributors){
+//            Platform.runLater(new Runnable() {
+//                @Override
+//                public void run() {
+//                    Thread th = new Thread(d);
+//                    th.setDaemon(true);
+//                    th.start();
+//                }
+//            });
+//        }
+//
+//        for (User u: users){
+//            Platform.runLater(new Runnable() {
+//                @Override
+//                public void run() {
+//                    Thread th = new Thread(u);
+//                    th.setDaemon(true);
+//                    th.start();
+//                }
+//            });
+//        }
+//
+//        in.close();
     }
 
-    public boolean isCanUserBeAdded() {
+    /**
+     * @return flag is true, when new user can be added to simulation
+     */
+    boolean isCanUserBeAdded() {
         return canUserBeAdded;
     }
 
+    /**
+     * @return ControlPanel money
+     */
     public IntegerProperty getMoney() {
         return money;
     }
 
-    public void addMoney(int m){
+    /**
+     * @param money how much money should the ControlPanel have
+     */
+    public void setMoney(int money) {
+        this.money.set(money);
+    }
+
+    /**
+     * Adds money to ControlPanel
+     * @param m money to add
+     */
+    void addMoney(int m){
         money.setValue(money.get() + m);
     }
 
-    public List<CWork> search(String pattern){
-        return null;
-    }
-
-    public IntegerProperty getBasicPrice() {
+    /**
+     * @return price of basic subscription
+     */
+    int getBasicPrice() {
         return basicPrice;
     }
 
+    /**
+     * @param basicPrice price of basic subscription
+     */
     public void setBasicPrice(int basicPrice) {
-        this.basicPrice.setValue(basicPrice);
+        this.basicPrice = basicPrice;
     }
 
-    public IntegerProperty getFamilyPrice() {
+    /**
+     * @return price of family subscription
+     */
+    int getFamilyPrice() {
         return familyPrice;
     }
 
+    /**
+     * @param familyPrice price of family subscription
+     */
     public void setFamilyPrice(int familyPrice) {
-        this.familyPrice.setValue(familyPrice);
+        this.familyPrice = familyPrice;
     }
 
-    public IntegerProperty getPremiumPrice() {
+    /**
+     * @return price of premium subscription
+     */
+    int getPremiumPrice() {
         return premiumPrice;
     }
 
+    /**
+     * @param premiumPrice price of premium subscription
+     */
     public void setPremiumPrice(int premiumPrice) {
-        this.premiumPrice.setValue(premiumPrice);
+        this.premiumPrice = premiumPrice;
     }
 
+    /**
+     * @return how many months money is under 0
+     */
     public IntegerProperty getMonthsWithoutProfit() {
         return monthsWithoutProfit;
     }
 
-    public void setMonthsWithoutProfit(int monthsWithoutProfit) {
+    /**
+     * @param monthsWithoutProfit how many months money is under 0
+     */
+    void setMonthsWithoutProfit(int monthsWithoutProfit) {
         this.monthsWithoutProfit.set(monthsWithoutProfit);
     }
 }

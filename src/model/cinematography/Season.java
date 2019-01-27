@@ -8,10 +8,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-/*
-TODO Dokumentacja!
+/**
+ * Represents Season of Series
  */
-
 public class Season implements Serializable {
     private Distributor distributor;
     private int number;
@@ -23,6 +22,12 @@ public class Season implements Serializable {
         this.episodes = createEpisodes(2, 10);
     }
 
+    /**
+     * Creates random Episode list
+     * @param minLen minimum length of list
+     * @param maxLen maximum length of list
+     * @return list of episodes
+     */
     private List<Episode> createEpisodes(int minLen, int maxLen) {
         if (minLen >= maxLen)
             throw new IllegalArgumentException("minLen must be smaller than maxLen");
@@ -34,20 +39,30 @@ public class Season implements Serializable {
         return episodes;
     }
 
+    /**
+     * @return number of season
+     */
     public int getNumber() {
         return number;
     }
 
+    /**
+     * @param number number of season
+     */
     public void setNumber(int number) {
         this.number = number;
     }
 
-
-
+    /**
+     * @return list of episodes in this season
+     */
     public List<Episode> getEpisodes() {
         return episodes;
     }
 
+    /**
+     * @param episodes list of episodes
+     */
     public void setEpisodes(List<Episode> episodes) {
         this.episodes.clear();
         this.episodes.addAll(episodes);

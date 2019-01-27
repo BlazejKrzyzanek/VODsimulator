@@ -2,42 +2,17 @@ package model.cinematography;
 
 import model.Distributor;
 
-import java.time.LocalDate;
-
-/*
-TODO dokumentacja!
+/**
+ * Episode of series as a single movie
  */
-
 public class Episode extends Movie{
-    private LocalDate releaseDate;
 
+    /**
+     * Episode of Season / Series with episodeID
+     * @param distributor creator of Series
+     * @param episodeId represents number of episode in parent Season
+     */
     public Episode(Distributor distributor, int episodeId) {
         super(distributor, episodeId);
-        this.releaseDate = createReleaseDate(1950,2020);
-
-    }
-
-    private LocalDate createReleaseDate(int minY, int maxY) {
-        int year = r.nextInt((maxY - minY + 1)) + minY;
-        int bound = 365;
-        if (year%400==0 || year%4==0 && year%100!=0) bound = 366;
-        int day = r.nextInt(bound)+1;
-        return LocalDate.ofYearDay(year, day);
-    }
-
-    public LocalDate getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(LocalDate releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    @Override
-    public String toString() {
-        return "Episode{" +
-                "title=" + this.getTitle() +
-                ", releaseDate=" + releaseDate +
-                "}\n";
     }
 }

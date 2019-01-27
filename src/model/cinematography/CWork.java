@@ -27,22 +27,31 @@ public abstract class CWork implements Serializable {
     private int imageId;
     private String description;
     private List<String> countryList;
-    private List<Integer> productionYearList;
+    private LocalDate releaseDate;
     private List<Actor> actorList;
     private int userRating;
 
     private int singlePrice;
+    private Promotion promotion;
+
 
     private Map<LocalDate, Integer> audienceMap;
-    Random r;
+    protected Random r;
 
     /**
      * Creates new CWork with random parameters, using words from appropriate lists
+     * @param distributor creator
      */
     public CWork(Distributor distributor){
         this(distributor, ControlPanel.getInstance().getNewCWorkId());
     }
 
+    /**
+     * Creates new CWork with specified ID number, can be used as another CWork within more general one
+     * (ex. episode of series)
+     * @param distributor creator
+     * @param id
+     */
     public CWork(Distributor distributor, int id){
         this.distributor = distributor;
         this.type = this.getClass().getSimpleName();
@@ -55,52 +64,72 @@ public abstract class CWork implements Serializable {
         this.title = createText(3,5);
         this.description = createText(20,50);
         this.countryList = createCountryList(1, 5);
-        this.productionYearList = createProductionYearList(1,6);
+        this.releaseDate = createReleaseDate(1980, 2020);
         this.actorList = new ArrayList<>();
         for (int i=0; i<new Random().nextInt(10) + 1; i++) actorList.add(new Actor());
         this.userRating = r.nextInt(10) + 1;
-        this.singlePrice = ControlPanel.getInstance().getMovieSinglePrice(); // between 0.1$ and 100$
-
+        this.singlePrice = ControlPanel.getInstance().getSinglePrice();
         this.audienceMap = new TreeMap<>();
+        this.promotion = null;
     }
 
+    /**
+     * @return ID of poster image
+     */
     public int getImageId() {
         return imageId;
     }
 
+    /**
+     * @return creator (Distributor)
+     */
     public Distributor getDistributor(){
         return distributor;
     }
 
-
+    /**
+     * Note that someone watched CWork at given date
+     */
     public void watch(){
         LocalDate date = Simulation.getDateTime().toLocalDate();
         this.audienceMap.merge(date, 1, (a, b) -> a + b);
     }
 
+    /**
+     * @return Map of audience (how many users watched CWork at given date)
+     */
     public Map<LocalDate, Integer> getAudienceMap(){
         return audienceMap;
     }
 
+    /**
+     * @return list of actors (Stars) playing in CWork
+     */
     public List<Actor> getActorList(){
         return actorList;
     }
 
     /**
-     * @return price for the option of watching through availableTime (cents)
+     * @return price for single watching
      */
     public int getSinglePrice() {
-        return singlePrice;
+        if (promotion != null && Simulation.getDateTime().isAfter(promotion.getExpirationDateTime())){
+            promotion = null;
+            return singlePrice;
+        } else if(promotion != null) {
+            return (int) Math.round(singlePrice * (1 - promotion.getDiscountPercent() / 100.0));
+        } else {
+            return singlePrice;
+        }
     }
 
     /**
-     * Sets price for the option of watching through availableTime (cents)
-     * @param singlePrice price (cents)
+     * Sets price for single watching
+     * @param singlePrice price in $
      */
     public void setSinglePrice(int singlePrice) {
         this.singlePrice = singlePrice;
     }
-
 
     /**
      * Creates random category based on the given list
@@ -124,20 +153,6 @@ public abstract class CWork implements Serializable {
      */
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    /**
-     * Creates a random list of the consecutive years of production
-     * @param minLen minimal list length
-     * @param maxLen maximal list length
-     * @return list of years in which the CWork was created
-     */
-    private ArrayList<Integer> createProductionYearList(int minLen, int maxLen) {
-        ArrayList<Integer> productionYearList = new ArrayList<>();
-        int length = r.nextInt((maxLen - minLen) + 1) + minLen;
-        int firstYear = r.nextInt((2020 - 1895) + 1) + 1895;
-        for (int i=0; i<length; i++) productionYearList.add(firstYear+i);
-        return productionYearList;
     }
 
     /**
@@ -168,7 +183,7 @@ public abstract class CWork implements Serializable {
         StringBuilder text = new StringBuilder();
         int wordIdx = r.nextInt(ControlPanel.getInstance().getWords().size());
 
-        text.append(ControlPanel.getInstance().getWords().get(wordIdx).substring(0, 1).toUpperCase());
+        text.append(ControlPanel.getInstance().getWords().get(wordIdx));
         for (int i=0; i<length; i++){
             wordIdx = r.nextInt(ControlPanel.getInstance().getWords().size());
             text.append(ControlPanel.getInstance().getWords().get(wordIdx));
@@ -178,8 +193,23 @@ public abstract class CWork implements Serializable {
                 text.append(" ");
             }
         }
-        return text.toString();
+        return text.substring(0, 1).toUpperCase() + text.substring(1);
     }
+
+    /**
+     * Creates random date of release between years
+     * @param minY minimum year
+     * @param maxY maximum year
+     * @return release date
+     */
+    protected LocalDate createReleaseDate(int minY, int maxY) {
+        int year = r.nextInt((maxY - minY + 1)) + minY;
+        int bound = 365;
+        if (year%400==0 || year%4==0 && year%100!=0) bound = 366;
+        int day = r.nextInt(bound)+1;
+        return LocalDate.ofYearDay(year, day);
+    }
+
     /**
      * @return CWork title
      */
@@ -188,19 +218,17 @@ public abstract class CWork implements Serializable {
     }
 
     /**
-     * Sets a title
      * @param title new title
      */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * @return type of CWork
+     */
     public String getType() {
         return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     /**
@@ -235,22 +263,6 @@ public abstract class CWork implements Serializable {
     }
 
     /**
-     * @return list of years in which the CWork was created
-     */
-    public List<Integer> getProductionYearList() {
-        return productionYearList;
-    }
-
-    /**
-     * Sets list of years in which the CWork was created
-     * @param productionYearList new list
-     */
-    public void setProductionYearList(List<Integer> productionYearList) {
-        this.productionYearList.clear();
-        this.productionYearList.addAll(productionYearList);
-    }
-
-    /**
      * @return rating of users
      */
     public int getUserRating() {
@@ -266,14 +278,53 @@ public abstract class CWork implements Serializable {
     }
 
     /**
+     * @return release date
+     */
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+    /**
+     * @param releaseDate date of release episode
+     */
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    /**
      * @return fixed id of CWork
      */
     public int getId() {
         return id;
     }
 
+    /**
+     * delete this CWork
+     */
     public void delete(){
         distributor.deleteCWork(this);
+    }
+
+    /**
+     * @return promotion, null if does not exist
+     */
+    public Promotion getPromotion() {
+        return promotion;
+    }
+
+    /**
+     * Sets the promotion
+     * @param promotion new promotion, null to remove
+     */
+    public void setPromotion(Promotion promotion) {
+        this.promotion = promotion;
+    }
+
+    /**
+     * Begins new random promotion
+     */
+    public void startPromotion() {
+        this.promotion = new Promotion();
     }
 
     @Override

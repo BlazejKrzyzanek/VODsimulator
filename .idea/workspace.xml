@@ -5,49 +5,114 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bcbcda3d-b7cd-459e-9fc6-330d85be7f23" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/model/UnprofitableController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/UnprofitableView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/ControlPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/ControlPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/ControlPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/ControlPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/ControlPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/ControlPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/allclasses-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/allclasses-noframe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/constant-values.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/controller/MainController.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/controller/MainController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/controller/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/controller/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/controller/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/controller/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/controller/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/controller/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/deprecated-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jquery-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/jquery/jquery-ui.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/jquery/jquery-ui.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/member-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/member-search-index.zip" beforeDir="false" afterPath="$PROJECT_DIR$/doc/member-search-index.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/model/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/model/Main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/model/cinematography/CWork.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/model/cinematography/CWork.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/model/cinematography/Episode.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/model/cinematography/Episode.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/model/cinematography/LiveStreaming.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/model/cinematography/LiveStreaming.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/model/cinematography/Movie.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/model/cinematography/Movie.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/model/cinematography/Promotion.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/model/cinematography/Promotion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/model/cinematography/Season.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/model/cinematography/Season.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/model/cinematography/Series.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/model/cinematography/Series.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/model/cinematography/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/model/cinematography/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/model/cinematography/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/model/cinematography/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/model/cinematography/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/model/cinematography/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/model/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/model/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/model/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/model/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/model/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/model/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/overview-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/overview-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/package-search-index.zip" beforeDir="false" afterPath="$PROJECT_DIR$/doc/package-search-index.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/type-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/type-search-index.zip" beforeDir="false" afterPath="$PROJECT_DIR$/doc/type-search-index.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/ControlPanel$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/ControlPanel$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/ControlPanel$3.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/ControlPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/ControlPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/Distributor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/Distributor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/DistributorInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/DistributorInfoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/MainController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/MainController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/MainController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/MainController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/ProductInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/ProductInfoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/ProductInfoView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/ProductInfoView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/Simulation$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/Simulation$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/DistributorInfoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/DistributorInfoView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/MainController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/MainController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/MainController$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/MainController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/MainView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/ProductInfoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/ProductInfoView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/Simulation$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/Simulation$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/Simulation$3.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/Simulation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/Simulation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/User$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/User$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/User$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/User$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/User$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/User$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/User$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/User$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/UnprofitableController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/UnprofitableView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/User$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/User$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/User$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/User$4.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/UserInfoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/UserInfoView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/UserInfoView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/UserInfoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/UserInfoView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/VariableSpeedClock.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/VodSubscription.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/VodSubscription.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/Actor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/Actor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/CWork.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/CWork.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/Episode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/Episode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/LiveStreaming.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/LiveStreaming.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/Movie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/Promotion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/Promotion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/Season.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/Season.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/Series.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/Series.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VODsimulator/model/cinematography/Trailer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/save.b" beforeDir="false" afterPath="$PROJECT_DIR$/save.b" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/ControlPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ControlPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Distributor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Distributor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DistributorInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DistributorInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ProductInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ProductInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ProductInfoView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ProductInfoView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DistributorInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DistributorInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DistributorInfoView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/DistributorInfoView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ProductInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ProductInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ProductInfoView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ProductInfoView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/UnprofitableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/UnprofitableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/UnprofitableView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/UnprofitableView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UserInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UserInfoView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UserInfoView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/UserInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/UserInfoView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/UserInfoView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/VariableSpeedClock.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/VodSubscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/VodSubscription.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/cinematography/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/cinematography/Actor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/cinematography/CWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/cinematography/CWork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/cinematography/Episode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/cinematography/Episode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/cinematography/LiveStreaming.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/cinematography/LiveStreaming.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/cinematography/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/cinematography/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/cinematography/Promotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/cinematography/Promotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/cinematography/Season.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/cinematography/Season.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/cinematography/Series.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/cinematography/Series.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/cinematography/Trailer.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,7 +143,7 @@
           <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="3" />
-          <entry key="project.open.time.11" value="4" />
+          <entry key="project.open.time.11" value="5" />
           <entry key="project.open.time.12" value="3" />
           <entry key="project.open.time.13" value="2" />
           <entry key="project.open.time.14" value="1" />
@@ -87,39 +152,39 @@
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="25" />
+          <entry key="project.opened" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="dict" value="2" />
-          <entry key="fxml" value="22" />
+          <entry key="fxml" value="30" />
           <entry key="html" value="2" />
-          <entry key="java" value="197" />
+          <entry key="java" value="258" />
           <entry key="jpg" value="1" />
-          <entry key="txt" value="4" />
+          <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="2" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="197" />
-          <entry key="PLAIN_TEXT" value="6" />
-          <entry key="XML" value="22" />
+          <entry key="JAVA" value="258" />
+          <entry key="PLAIN_TEXT" value="8" />
+          <entry key="XML" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="3" />
           <entry key="fxml" value="179" />
-          <entry key="java" value="39210" />
+          <entry key="java" value="49336" />
           <entry key="txt" value="238" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="39210" />
+          <entry key="JAVA" value="49336" />
           <entry key="PLAIN_TEXT" value="241" />
           <entry key="XML" value="179" />
         </counts>
@@ -131,45 +196,83 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/Simulation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="109" column="26" lean-forward="true" selection-start-line="109" selection-start-column="26" selection-end-line="109" selection-end-column="26" />
+            <state relative-caret-position="131">
+              <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1632#1633#0" expanded="true" />
-                <element signature="e#1751#1752#0" expanded="true" />
-                <element signature="e#1907#1908#0" expanded="true" />
-                <element signature="e#2027#2028#0" expanded="true" />
-                <element signature="method#pauseSimulation#0;class#Simulation#0" />
-                <element signature="e#3725#3726#0" expanded="true" />
-                <element signature="e#3754#3755#0" expanded="true" />
-                <element signature="e#3815#3816#0" expanded="true" />
-                <element signature="e#3852#3853#0" expanded="true" />
-                <element signature="e#3906#3907#0" expanded="true" />
-                <element signature="e#3968#3969#0" expanded="true" />
-                <element signature="e#4296#4297#0" expanded="true" />
-                <element signature="e#4327#4328#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/MainController.java">
+        <entry file="file://$PROJECT_DIR$/src/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5">
-              <caret line="130" selection-start-line="130" selection-end-line="130" />
+            <state relative-caret-position="462">
+              <caret line="357" column="9" lean-forward="true" selection-start-line="357" selection-start-column="9" selection-end-line="357" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#unprofitable#0;class#MainController#0" />
                 <element signature="method#distributorOA#0;class#MainController#0" />
-                <element signature="method#userOA#0;class#MainController#0" />
-                <element signature="method#productOA#0;class#MainController#0" />
-                <element signature="e#9366#9367#0" expanded="true" />
-                <element signature="e#9460#9461#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/ProductInfoController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="81" column="48" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/ProductInfoView.fxml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="83" selection-start-line="20" selection-start-column="83" selection-end-line="20" selection-end-column="83" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/MainView.fxml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/cinematography/Promotion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+              <folding>
+                <element signature="e#1915#1916#0" expanded="true" />
+                <element signature="e#1955#1956#0" expanded="true" />
+                <element signature="e#2598#2599#0" expanded="true" />
+                <element signature="e#2635#2636#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/cinematography/Movie.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="731">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
             </state>
           </provider>
         </entry>
@@ -177,44 +280,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="136" column="8" lean-forward="true" selection-start-line="136" selection-start-column="8" selection-end-line="136" selection-end-column="17" />
+            <state relative-caret-position="-1102">
+              <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
               <folding>
-                <element signature="e#2307#2308#0" expanded="true" />
-                <element signature="e#2410#2411#0" expanded="true" />
-                <element signature="e#3173#3174#0" expanded="true" />
-                <element signature="e#3284#3285#0" expanded="true" />
-                <element signature="e#3815#3816#0" expanded="true" />
-                <element signature="e#3926#3927#0" expanded="true" />
-                <element signature="e#5494#5495#0" expanded="true" />
-                <element signature="e#5526#5527#0" expanded="true" />
+                <element signature="e#5218#5219#0" expanded="true" />
+                <element signature="e#5250#5251#0" expanded="true" />
                 <element signature="method#createEmail#0;class#User#0" />
-                <element signature="e#6513#6514#0" expanded="true" />
-                <element signature="e#6541#6542#0" expanded="true" />
-                <element signature="e#6806#6807#0" expanded="true" />
-                <element signature="e#6845#6846#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/model/Distributor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
-              <folding>
-                <element signature="e#2224#2225#0" expanded="true" />
-                <element signature="e#2256#2257#0" expanded="true" />
-                <element signature="method#createName#0;class#Distributor#0" />
-                <element signature="method#negotiate#0;class#Distributor#0" />
-                <element signature="method#createCWork#0;class#Distributor#0" />
-                <element signature="method#deleteCWork#0;class#Distributor#0" />
-                <element signature="method#setcWorks#0;class#Distributor#0" />
-                <element signature="e#4971#4972#0" expanded="true" />
-                <element signature="e#5040#5041#0" expanded="true" />
-                <element signature="e#5086#5087#0" expanded="true" />
-                <element signature="e#5124#5125#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -223,22 +294,55 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/ControlPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="252" column="23" selection-start-line="252" selection-start-column="12" selection-end-line="252" selection-end-column="23" />
+            <state relative-caret-position="375">
+              <caret line="133" column="19" selection-start-line="133" selection-start-column="19" selection-end-line="133" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#9785#9786#0" expanded="true" />
-                <element signature="e#9812#9813#0" expanded="true" />
-                <element signature="e#9940#9941#0" expanded="true" />
-                <element signature="e#9992#9993#0" expanded="true" />
-                <element signature="e#10124#10125#0" expanded="true" />
-                <element signature="e#10178#10179#0" expanded="true" />
-                <element signature="e#10314#10315#0" expanded="true" />
-                <element signature="e#10370#10371#0" expanded="true" />
-                <element signature="e#10413#10414#0" expanded="true" />
-                <element signature="e#10455#10456#0" expanded="true" />
-                <element signature="e#10580#10581#0" expanded="true" />
-                <element signature="e#10645#10646#0" expanded="true" />
+                <element signature="e#5013#5014#0" expanded="true" />
+                <element signature="e#5041#5042#0" expanded="true" />
+                <element signature="e#5140#5141#0" expanded="true" />
+                <element signature="e#5179#5180#0" expanded="true" />
+                <element signature="e#5274#5275#0" expanded="true" />
+                <element signature="e#5302#5303#0" expanded="true" />
+                <element signature="e#5406#5407#0" expanded="true" />
+                <element signature="e#5441#5442#0" expanded="true" />
+                <element signature="e#5540#5541#0" expanded="true" />
+                <element signature="e#5573#5574#0" expanded="true" />
+                <element signature="e#5670#5671#0" expanded="true" />
+                <element signature="e#5710#5711#0" expanded="true" />
+                <element signature="e#5789#5790#0" expanded="true" />
+                <element signature="e#5823#5824#0" expanded="true" />
+                <element signature="e#5959#5960#0" expanded="true" />
+                <element signature="e#5994#5995#0" expanded="true" />
+                <element signature="e#6943#6944#0" expanded="true" />
+                <element signature="e#6971#6972#0" expanded="true" />
+                <element signature="e#7249#7250#0" expanded="true" />
+                <element signature="e#7278#7279#0" expanded="true" />
+                <element signature="e#7221#8412#0" />
+                <element signature="e#9976#9977#0" expanded="true" />
+                <element signature="e#10013#10014#0" expanded="true" />
+                <element signature="e#10104#10105#0" expanded="true" />
+                <element signature="e#10132#10133#0" expanded="true" />
+                <element signature="e#10251#10252#0" expanded="true" />
+                <element signature="e#10288#10289#0" expanded="true" />
+                <element signature="e#10394#10395#0" expanded="true" />
+                <element signature="e#10441#10442#0" expanded="true" />
+                <element signature="e#10527#10528#0" expanded="true" />
+                <element signature="e#10560#10561#0" expanded="true" />
+                <element signature="e#10678#10679#0" expanded="true" />
+                <element signature="e#10722#10723#0" expanded="true" />
+                <element signature="e#10810#10811#0" expanded="true" />
+                <element signature="e#10844#10845#0" expanded="true" />
+                <element signature="e#10966#10967#0" expanded="true" />
+                <element signature="e#11012#11013#0" expanded="true" />
+                <element signature="e#11102#11103#0" expanded="true" />
+                <element signature="e#11137#11138#0" expanded="true" />
+                <element signature="e#11263#11264#0" expanded="true" />
+                <element signature="e#11311#11312#0" expanded="true" />
+                <element signature="e#11430#11431#0" expanded="true" />
+                <element signature="e#11472#11473#0" expanded="true" />
+                <element signature="e#11615#11616#0" expanded="true" />
+                <element signature="e#11680#11681#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -251,8 +355,8 @@
       <list>
         <option value="Interface" />
         <option value="JavaFXApplication" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -268,10 +372,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/controller/MainViewController.java" />
-        <option value="$PROJECT_DIR$/src/controller/MainController.java" />
-        <option value="$PROJECT_DIR$/src/model/Series.java" />
-        <option value="$PROJECT_DIR$/src/model/Season.java" />
         <option value="$PROJECT_DIR$/src/model/Episode.java" />
         <option value="$PROJECT_DIR$/src/model/CWork.java" />
         <option value="$PROJECT_DIR$/src/model/Movie.java" />
@@ -282,39 +382,47 @@
         <option value="$PROJECT_DIR$/resources/text/distributorNames.txt" />
         <option value="$PROJECT_DIR$/src/model/CWorkFactory.java" />
         <option value="$PROJECT_DIR$/src/model/VariableSpeedClock.java" />
-        <option value="$PROJECT_DIR$/src/view/MainView.fxml" />
         <option value="$PROJECT_DIR$/src/MainController.java" />
         <option value="$PROJECT_DIR$/src/cinematography/CWork.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/model/cinematography/Series.java" />
-        <option value="$PROJECT_DIR$/src/model/cinematography/Episode.java" />
-        <option value="$PROJECT_DIR$/src/model/cinematography/Promotion.java" />
-        <option value="$PROJECT_DIR$/src/model/cinematography/Season.java" />
-        <option value="$PROJECT_DIR$/src/model/cinematography/Trailer.java" />
         <option value="$PROJECT_DIR$/src/model/ProductionInfoController.java" />
         <option value="$PROJECT_DIR$/src/model/ProductInfo.java" />
-        <option value="$PROJECT_DIR$/src/model/Main.java" />
-        <option value="$PROJECT_DIR$/src/model/cinematography/LiveStreaming.java" />
         <option value="$PROJECT_DIR$/src/model/UserInfoController.java" />
         <option value="$PROJECT_DIR$/src/model/UserInfoView.fxml" />
         <option value="$PROJECT_DIR$/src/model/DistributorInfoView.fxml" />
         <option value="$PROJECT_DIR$/src/model/DistributorInfoController.java" />
-        <option value="$PROJECT_DIR$/src/model/VodSubscription.java" />
-        <option value="$PROJECT_DIR$/src/model/cinematography/Movie.java" />
-        <option value="$PROJECT_DIR$/src/model/cinematography/Actor.java" />
         <option value="$PROJECT_DIR$/src/model/ProductInfoView.fxml" />
-        <option value="$PROJECT_DIR$/src/model/cinematography/CWork.java" />
         <option value="$PROJECT_DIR$/src/model/ProductInfoController.java" />
         <option value="$PROJECT_DIR$/src/model/MainView.fxml" />
-        <option value="$PROJECT_DIR$/src/model/ControlPanel.java" />
         <option value="$PROJECT_DIR$/src/model/cinematography/UnprofitableView.fxml" />
         <option value="$PROJECT_DIR$/src/model/cinematography/UnprofitableController.java" />
         <option value="$PROJECT_DIR$/src/model/UnprofitableView.fxml" />
         <option value="$PROJECT_DIR$/src/model/UnprofitableController.java" />
         <option value="$PROJECT_DIR$/src/model/MainController.java" />
-        <option value="$PROJECT_DIR$/src/model/Simulation.java" />
-        <option value="$PROJECT_DIR$/src/model/User.java" />
+        <option value="$PROJECT_DIR$/src/model/DistributorSerializable.java" />
+        <option value="$PROJECT_DIR$/src/controller/DistributorInfoController.java" />
+        <option value="$PROJECT_DIR$/src/view/MainView.fxml" />
+        <option value="$PROJECT_DIR$/src/controller/UnprofitableController.java" />
+        <option value="$PROJECT_DIR$/src/controller/UserInfoController.java" />
+        <option value="$PROJECT_DIR$/src/model/cinematography/Episode.java" />
+        <option value="$PROJECT_DIR$/src/model/cinematography/LiveStreaming.java" />
+        <option value="$PROJECT_DIR$/src/model/cinematography/Season.java" />
+        <option value="$PROJECT_DIR$/src/model/cinematography/Trailer.java" />
+        <option value="$PROJECT_DIR$/src/model/cinematography/Actor.java" />
+        <option value="$PROJECT_DIR$/src/model/Main.java" />
+        <option value="$PROJECT_DIR$/src/model/VodSubscription.java" />
+        <option value="$PROJECT_DIR$/src/model/cinematography/Series.java" />
         <option value="$PROJECT_DIR$/src/model/Distributor.java" />
+        <option value="$PROJECT_DIR$/src/model/User.java" />
+        <option value="$PROJECT_DIR$/src/model/ControlPanel.java" />
+        <option value="$PROJECT_DIR$/src/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/src/view/DistributorInfoView.fxml" />
+        <option value="$PROJECT_DIR$/src/model/cinematography/Movie.java" />
+        <option value="$PROJECT_DIR$/src/model/cinematography/CWork.java" />
+        <option value="$PROJECT_DIR$/src/model/cinematography/Promotion.java" />
+        <option value="$PROJECT_DIR$/src/view/ProductInfoView.fxml" />
+        <option value="$PROJECT_DIR$/src/controller/ProductInfoController.java" />
+        <option value="$PROJECT_DIR$/src/model/Simulation.java" />
       </list>
     </option>
   </component>
@@ -330,9 +438,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="641" />
-    <option name="y" value="1" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -340,11 +448,11 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="PackagesPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -356,12 +464,6 @@
               <item name="VODsimulator" type="b2602c69:ProjectViewProjectNode" />
               <item name="VODsimulator" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VODsimulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VODsimulator" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="text" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VODsimulator" type="b2602c69:ProjectViewProjectNode" />
@@ -381,11 +483,17 @@
               <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="cinematography" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="VODsimulator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VODsimulator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -398,12 +506,6 @@
               <item name="VODsimulator" type="616d4139:PackageViewModuleNode" />
               <item name="model" type="1f31426a:PackageElementNode" />
             </path>
-            <path>
-              <item name="VODsimulator" type="58d84e3e:PackageViewProjectNode" />
-              <item name="VODsimulator" type="616d4139:PackageViewModuleNode" />
-              <item name="model" type="1f31426a:PackageElementNode" />
-              <item name="cinematography" type="1f31426a:PackageElementNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -414,8 +516,9 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/blkrz/IdeaProjects/VODsimulator/src/model/ControlPanel.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548542717167" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548614378756" />
     <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -425,9 +528,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="controller" />
       <recent name="model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\blkrz\IdeaProjects\VODsimulator\src\view" />
       <recent name="C:\Users\blkrz\IdeaProjects\VODsimulator\src\model" />
       <recent name="C:\Users\blkrz\IdeaProjects\VODsimulator\src" />
       <recent name="C:\Users\blkrz\IdeaProjects\VODsimulator" />
@@ -452,7 +557,7 @@
       <module name="VODsimulator" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -501,11 +606,12 @@
       <workItem from="1546869391627" duration="10000" />
       <workItem from="1548240719621" duration="3450000" />
       <workItem from="1548433891658" duration="60343000" />
+      <workItem from="1548584008191" duration="28077000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="224715000" />
+    <option name="totallyTimeSpent" value="252792000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -517,10 +623,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49716714" visible="true" weight="0.120469086" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49716714" weight="0.12153518" />
       <window_info id="Structure" order="1" sideWeight="0.5028329" side_tool="true" weight="0.18070363" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -528,9 +634,9 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.50198674" side_tool="true" weight="0.1098081" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.38503253" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.521855" visible="true" weight="0.2451193" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.22668113" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.318872" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.521855" visible="true" weight="0.36117136" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.18221258" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.329718" />
@@ -550,17 +656,17 @@
       <window_info anchor="right" id="Maven Projects" order="8" weight="0.32995737" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49801326" visible="true" weight="0.18070363" />
-      <window_info id="Structure" order="1" sideWeight="0.5010846" side_tool="true" weight="0.25266525" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49716714" visible="true" weight="0.12153518" />
+      <window_info id="Structure" order="1" sideWeight="0.5028329" side_tool="true" weight="0.18070363" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.50198674" side_tool="true" weight="0.1098081" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.521855" visible="true" weight="0.4186551" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.22668113" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.318872" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.521855" visible="true" weight="0.36117136" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.18221258" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.329718" />
@@ -574,7 +680,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Database" order="5" weight="0.32995737" />
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" weight="0.32995737" />
@@ -591,35 +697,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/model/CWorkFactory.java" />
-    <entry file="file://$PROJECT_DIR$/src/model/VariableSpeedClock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/concurrent/FutureTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="253" column="16" selection-start-line="253" selection-start-column="16" selection-end-line="253" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/jdk/internal/reflect/NativeMethodAccessorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/reflect/Method.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="563" selection-start-line="563" selection-end-line="563" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.base/javafx/beans/property/BooleanPropertyBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -725,51 +802,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/cinematography/Episode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="4" column="27" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/cinematography/Promotion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/cinematography/Season.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/cinematography/Series.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="33" lean-forward="true" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/cinematography/Trailer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/ProductInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/ProductInfo.java" />
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.base/javafx/event/Event.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="569">
@@ -791,83 +824,8 @@
     <entry file="file://$PROJECT_DIR$/resources/img/8.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/UserInfoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="44" column="1" lean-forward="true" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/UserInfoView.fxml">
+    <entry file="file://$PROJECT_DIR$/src/view/UserInfoView.fxml">
       <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/cinematography/LiveStreaming.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/DistributorInfoView.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/VodSubscription.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/cinematography/Actor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="51" column="35" lean-forward="true" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
-          <folding>
-            <element signature="e#747#748#0" expanded="true" />
-            <element signature="e#795#796#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/cinematography/Movie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7">
-          <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/cinematography/CWork.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2105">
-          <caret line="175" column="31" selection-start-line="175" selection-start-column="31" selection-end-line="175" selection-end-column="31" />
-          <folding>
-            <element signature="e#2413#2414#0" expanded="true" />
-            <element signature="e#2445#2446#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/MainView.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="240" selection-start-line="22" selection-start-column="240" selection-end-line="22" selection-end-column="240" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.fxml/javafx/fxml/FXMLLoader.java">
@@ -881,53 +839,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/UnprofitableView.fxml">
+    <entry file="file://$PROJECT_DIR$/src/view/UnprofitableView.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/ProductInfoView.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="20" column="83" selection-start-line="20" selection-start-column="83" selection-end-line="20" selection-end-column="83" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/DistributorInfoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="742">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/UnprofitableController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#423#424#0" expanded="true" />
-            <element signature="e#455#456#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/ProductInfoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="77" column="68" lean-forward="true" selection-start-line="77" selection-start-column="68" selection-end-line="77" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.base/javafx/collections/ListChangeListener.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -936,105 +854,354 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/ControlPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/model/DistributorSerializable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="252" column="23" selection-start-line="252" selection-start-column="12" selection-end-line="252" selection-end-column="23" />
+        <state relative-caret-position="340">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9785#9786#0" expanded="true" />
-            <element signature="e#9812#9813#0" expanded="true" />
-            <element signature="e#9940#9941#0" expanded="true" />
-            <element signature="e#9992#9993#0" expanded="true" />
-            <element signature="e#10124#10125#0" expanded="true" />
-            <element signature="e#10178#10179#0" expanded="true" />
-            <element signature="e#10314#10315#0" expanded="true" />
-            <element signature="e#10370#10371#0" expanded="true" />
-            <element signature="e#10413#10414#0" expanded="true" />
-            <element signature="e#10455#10456#0" expanded="true" />
-            <element signature="e#10580#10581#0" expanded="true" />
-            <element signature="e#10645#10646#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/MainController.java">
+    <entry file="file://$PROJECT_DIR$/src/model/VariableSpeedClock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="130" selection-start-line="130" selection-end-line="130" />
+        <state relative-caret-position="272">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/DistributorInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="48" column="11" lean-forward="true" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#unprofitable#0;class#MainController#0" />
-            <element signature="method#distributorOA#0;class#MainController#0" />
-            <element signature="method#userOA#0;class#MainController#0" />
-            <element signature="method#productOA#0;class#MainController#0" />
-            <element signature="e#9366#9367#0" expanded="true" />
-            <element signature="e#9460#9461#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Simulation.java">
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.fxml/javafx/fxml/Initializable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="109" column="26" lean-forward="true" selection-start-line="109" selection-start-column="26" selection-end-line="109" selection-end-column="26" />
+        <state relative-caret-position="493">
+          <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/UnprofitableController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1632#1633#0" expanded="true" />
-            <element signature="e#1751#1752#0" expanded="true" />
-            <element signature="e#1907#1908#0" expanded="true" />
-            <element signature="e#2027#2028#0" expanded="true" />
-            <element signature="method#pauseSimulation#0;class#Simulation#0" />
-            <element signature="e#3725#3726#0" expanded="true" />
-            <element signature="e#3754#3755#0" expanded="true" />
-            <element signature="e#3815#3816#0" expanded="true" />
-            <element signature="e#3852#3853#0" expanded="true" />
-            <element signature="e#3906#3907#0" expanded="true" />
-            <element signature="e#3968#3969#0" expanded="true" />
-            <element signature="e#4296#4297#0" expanded="true" />
-            <element signature="e#4327#4328#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/User.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/UserInfoController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="136" column="8" lean-forward="true" selection-start-line="136" selection-start-column="8" selection-end-line="136" selection-end-column="17" />
+        <state relative-caret-position="611">
+          <caret line="43" column="77" lean-forward="true" selection-start-line="43" selection-start-column="77" selection-end-line="43" selection-end-column="77" />
           <folding>
-            <element signature="e#2307#2308#0" expanded="true" />
-            <element signature="e#2410#2411#0" expanded="true" />
-            <element signature="e#3173#3174#0" expanded="true" />
-            <element signature="e#3284#3285#0" expanded="true" />
-            <element signature="e#3815#3816#0" expanded="true" />
-            <element signature="e#3926#3927#0" expanded="true" />
-            <element signature="e#5494#5495#0" expanded="true" />
-            <element signature="e#5526#5527#0" expanded="true" />
-            <element signature="method#createEmail#0;class#User#0" />
-            <element signature="e#6513#6514#0" expanded="true" />
-            <element signature="e#6541#6542#0" expanded="true" />
-            <element signature="e#6806#6807#0" expanded="true" />
-            <element signature="e#6845#6846#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#649#650#0" expanded="true" />
+            <element signature="e#678#679#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/cinematography/Episode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#444#445#0" expanded="true" />
+            <element signature="e#489#490#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/cinematography/LiveStreaming.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/cinematography/Season.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="66" column="30" lean-forward="true" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
+          <folding>
+            <element signature="e#1113#1114#0" expanded="true" />
+            <element signature="e#1142#1143#0" expanded="true" />
+            <element signature="e#1183#1184#0" expanded="true" />
+            <element signature="e#1219#1220#0" expanded="true" />
+            <element signature="e#1263#1264#0" expanded="true" />
+            <element signature="e#1294#1295#0" expanded="true" />
+            <element signature="e#1768#1769#0" expanded="true" />
+            <element signature="e#1821#1822#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/cinematography/Trailer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/text/names.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/text/dict.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/cinematography/Actor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="30" column="41" lean-forward="true" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
+          <folding>
+            <element signature="e#299#300#0" expanded="true" />
+            <element signature="e#323#324#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/VodSubscription.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1273#1274#0" expanded="true" />
+            <element signature="e#1301#1302#0" expanded="true" />
+            <element signature="e#1340#1341#0" expanded="true" />
+            <element signature="e#1374#1375#0" expanded="true" />
+            <element signature="e#1411#1412#0" expanded="true" />
+            <element signature="e#1448#1449#0" expanded="true" />
+            <element signature="e#1872#1873#0" expanded="true" />
+            <element signature="e#1947#1948#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/cinematography/Series.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1097#1098#0" expanded="true" />
+            <element signature="e#1127#1128#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Distributor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+        <state relative-caret-position="714">
+          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
           <folding>
-            <element signature="e#2224#2225#0" expanded="true" />
-            <element signature="e#2256#2257#0" expanded="true" />
-            <element signature="method#createName#0;class#Distributor#0" />
-            <element signature="method#negotiate#0;class#Distributor#0" />
-            <element signature="method#createCWork#0;class#Distributor#0" />
-            <element signature="method#deleteCWork#0;class#Distributor#0" />
-            <element signature="method#setcWorks#0;class#Distributor#0" />
-            <element signature="e#4971#4972#0" expanded="true" />
-            <element signature="e#5040#5041#0" expanded="true" />
-            <element signature="e#5086#5087#0" expanded="true" />
-            <element signature="e#5124#5125#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2079#2080#0" expanded="true" />
+            <element signature="e#2111#2112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/ControlPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="133" column="19" selection-start-line="133" selection-start-column="19" selection-end-line="133" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5013#5014#0" expanded="true" />
+            <element signature="e#5041#5042#0" expanded="true" />
+            <element signature="e#5140#5141#0" expanded="true" />
+            <element signature="e#5179#5180#0" expanded="true" />
+            <element signature="e#5274#5275#0" expanded="true" />
+            <element signature="e#5302#5303#0" expanded="true" />
+            <element signature="e#5406#5407#0" expanded="true" />
+            <element signature="e#5441#5442#0" expanded="true" />
+            <element signature="e#5540#5541#0" expanded="true" />
+            <element signature="e#5573#5574#0" expanded="true" />
+            <element signature="e#5670#5671#0" expanded="true" />
+            <element signature="e#5710#5711#0" expanded="true" />
+            <element signature="e#5789#5790#0" expanded="true" />
+            <element signature="e#5823#5824#0" expanded="true" />
+            <element signature="e#5959#5960#0" expanded="true" />
+            <element signature="e#5994#5995#0" expanded="true" />
+            <element signature="e#6943#6944#0" expanded="true" />
+            <element signature="e#6971#6972#0" expanded="true" />
+            <element signature="e#7249#7250#0" expanded="true" />
+            <element signature="e#7278#7279#0" expanded="true" />
+            <element signature="e#7221#8412#0" />
+            <element signature="e#9976#9977#0" expanded="true" />
+            <element signature="e#10013#10014#0" expanded="true" />
+            <element signature="e#10104#10105#0" expanded="true" />
+            <element signature="e#10132#10133#0" expanded="true" />
+            <element signature="e#10251#10252#0" expanded="true" />
+            <element signature="e#10288#10289#0" expanded="true" />
+            <element signature="e#10394#10395#0" expanded="true" />
+            <element signature="e#10441#10442#0" expanded="true" />
+            <element signature="e#10527#10528#0" expanded="true" />
+            <element signature="e#10560#10561#0" expanded="true" />
+            <element signature="e#10678#10679#0" expanded="true" />
+            <element signature="e#10722#10723#0" expanded="true" />
+            <element signature="e#10810#10811#0" expanded="true" />
+            <element signature="e#10844#10845#0" expanded="true" />
+            <element signature="e#10966#10967#0" expanded="true" />
+            <element signature="e#11012#11013#0" expanded="true" />
+            <element signature="e#11102#11103#0" expanded="true" />
+            <element signature="e#11137#11138#0" expanded="true" />
+            <element signature="e#11263#11264#0" expanded="true" />
+            <element signature="e#11311#11312#0" expanded="true" />
+            <element signature="e#11430#11431#0" expanded="true" />
+            <element signature="e#11472#11473#0" expanded="true" />
+            <element signature="e#11615#11616#0" expanded="true" />
+            <element signature="e#11680#11681#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1102">
+          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+          <folding>
+            <element signature="e#5218#5219#0" expanded="true" />
+            <element signature="e#5250#5251#0" expanded="true" />
+            <element signature="method#createEmail#0;class#User#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/DistributorInfoView.fxml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/cinematography/CWork.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="119" column="34" lean-forward="true" selection-start-line="119" selection-start-column="34" selection-end-line="119" selection-end-column="34" />
+          <folding>
+            <element signature="e#3642#3643#0" expanded="true" />
+            <element signature="e#3688#3689#0" expanded="true" />
+            <element signature="e#4064#4065#0" expanded="true" />
+            <element signature="e#4095#4096#0" expanded="true" />
+            <element signature="e#4225#4226#0" expanded="true" />
+            <element signature="e#4265#4266#0" expanded="true" />
+            <element signature="e#6507#6508#0" expanded="true" />
+            <element signature="e#6535#6536#0" expanded="true" />
+            <element signature="e#6623#6624#0" expanded="true" />
+            <element signature="e#6657#6658#0" expanded="true" />
+            <element signature="e#6733#6734#0" expanded="true" />
+            <element signature="e#6760#6761#0" expanded="true" />
+            <element signature="e#6847#6848#0" expanded="true" />
+            <element signature="e#6881#6882#0" expanded="true" />
+            <element signature="e#7028#7029#0" expanded="true" />
+            <element signature="e#7074#7075#0" expanded="true" />
+            <element signature="e#7198#7199#0" expanded="true" />
+            <element signature="e#7232#7233#0" expanded="true" />
+            <element signature="e#7575#7576#0" expanded="true" />
+            <element signature="e#7608#7609#0" expanded="true" />
+            <element signature="e#7735#7736#0" expanded="true" />
+            <element signature="e#7779#7780#0" expanded="true" />
+            <element signature="e#7864#7865#0" expanded="true" />
+            <element signature="e#7898#7899#0" expanded="true" />
+            <element signature="e#8021#8022#0" expanded="true" />
+            <element signature="e#8067#8068#0" expanded="true" />
+            <element signature="e#8142#8143#0" expanded="true" />
+            <element signature="e#8167#8168#0" expanded="true" />
+            <element signature="e#8235#8236#0" expanded="true" />
+            <element signature="e#8280#8281#0" expanded="true" />
+            <element signature="e#8384#8385#0" expanded="true" />
+            <element signature="e#8416#8417#0" expanded="true" />
+            <element signature="e#8565#8566#0" expanded="true" />
+            <element signature="e#8607#8608#0" expanded="true" />
+            <element signature="e#8694#8695#0" expanded="true" />
+            <element signature="e#8742#8743#0" expanded="true" />
+            <element signature="e#9025#9026#0" expanded="true" />
+            <element signature="e#9064#9065#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/cinematography/Movie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/ProductInfoView.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="83" selection-start-line="20" selection-start-column="83" selection-end-line="20" selection-end-column="83" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/cinematography/Promotion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+          <folding>
+            <element signature="e#1915#1916#0" expanded="true" />
+            <element signature="e#1955#1956#0" expanded="true" />
+            <element signature="e#2598#2599#0" expanded="true" />
+            <element signature="e#2635#2636#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/MainView.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ProductInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="81" column="48" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="357" column="9" lean-forward="true" selection-start-line="357" selection-start-column="9" selection-end-line="357" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#distributorOA#0;class#MainController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Simulation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
