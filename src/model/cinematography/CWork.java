@@ -1,9 +1,5 @@
 package model.cinematography;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.ObservableMap;
-import javafx.scene.image.Image;
 import model.ControlPanel;
 import model.Distributor;
 import model.Simulation;
@@ -11,7 +7,6 @@ import model.Simulation;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Represents any kind of cinematographic work

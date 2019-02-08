@@ -13,19 +13,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-import static java.lang.Thread.sleep;
-
-/*
-TODO płacenie dystrybutorom (np. na koniec każdego miesiąca)
-TODO pobieranie opłat od użytkowników
-TODO wyszukiwarka (może osobna klasa do tego)
-TODO pobieranie danych o filmach / serialach i live z imdb https://www.imdb.com/interfaces/
-TODO sprawdzanie czy biznes się opłaca (można podnieść ceny jeśli się nie będzie opłacać, ale powinno wtedy spaść prawdopodobieństwo oglądania filmu)
-TODO Dokumentacja!
-
-FIXME zrobić z tego singleton i poprawić wszystkie błędy  z serializacja zwlaszcza
- */
-
 /**
  * Singleton class which controls simulation objects
  */

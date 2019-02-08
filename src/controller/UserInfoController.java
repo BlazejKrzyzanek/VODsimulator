@@ -32,7 +32,7 @@ public class UserInfoController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         Platform.runLater(() -> {
             this.idLabel.setText((String.valueOf(this.user.getId())));
-            String imageUrl = "/img/avatar" + user.getGender() + ".jpg";
+            String imageUrl = "img/avatar" + user.getGender() + ".jpg";
             this.avatarImage.setImage(new Image(imageUrl));
             this.mailLabel.setText(this.user.getEmail());
             this.dateLabel.setText(this.user.getBirthDate().toString());

@@ -1,4 +1,4 @@
-package model;
+package controller;
 
 import controller.MainController;
 import javafx.application.Application;
@@ -22,7 +22,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/MainView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainView.fxml"));
 
         Parent root = loader.load();
 

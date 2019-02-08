@@ -138,7 +138,7 @@ public class MainController implements Initializable {
      */
     private void unprofitable(){
         pauseButtonOA(); // resets simulation
-        FXMLLoader loader = new FXMLLoader(MainController.class.getResource("../view/UnprofitableView.fxml"));
+        FXMLLoader loader = new FXMLLoader(MainController.class.getResource("UnprofitableView.fxml"));
 
         UnprofitableController unprofitableController = new UnprofitableController();
         loader.setController(unprofitableController);
@@ -162,7 +162,7 @@ public class MainController implements Initializable {
      */
     static void distributorOA(Distributor d){
         if(d != null) {
-            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("../view/DistributorInfoView.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("DistributorInfoView.fxml"));
 
             DistributorInfoController distributorInfoController = new DistributorInfoController(d);
             loader.setController(distributorInfoController);
@@ -187,7 +187,7 @@ public class MainController implements Initializable {
      */
     static void userOA(User u){
         if(u != null) {
-            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("../view/UserInfoView.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("UserInfoView.fxml"));
 
             UserInfoController userInfoController = new UserInfoController(u);
             loader.setController(userInfoController);
@@ -212,7 +212,7 @@ public class MainController implements Initializable {
      */
     static void productOA(CWork c){
         if(c != null) {
-            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("../view/ProductInfoView.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("ProductInfoView.fxml"));
 
             ProductInfoController productInfoController = new ProductInfoController(c);
             loader.setController(productInfoController);
